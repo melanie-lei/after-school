@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34a86cd9-fd97-4840-83a5-b70e0029d631" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ChatBox.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DialogueOptions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GraphicsPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Storyline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +48,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1673113402604</updated>
-      <workItem from="1673113404875" duration="3665000" />
+      <workItem from="1673113404875" duration="4259000" />
     </task>
     <servers />
   </component>
