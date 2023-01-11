@@ -16,6 +16,8 @@ public class Client implements Runnable{
     PrintWriter output;
     BufferedReader input;
     String serverData;
+    Player player;
+    Storyline storyline;
     @Override
     public void run() {
         Client client = new Client();

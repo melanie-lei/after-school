@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -49,10 +48,14 @@ public class Server {
         public void run() {
 
             while (true) {
-                try {Thread.sleep(20);} catch (InterruptedException e) {throw new RuntimeException(e);}
+                try {
+                    Thread.sleep(20);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
                 try {
                     //receive a message from the client
-                    if(input.ready()) {
+                    if (input.ready()) {
                         System.out.println("receiving data");
                         data = input.readLine();
                         dataQ.add(data);
