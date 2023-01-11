@@ -9,7 +9,7 @@ import java.util.HashMap;
 public class Client implements Runnable{
 
     final String LOCAL_HOST = "192.168.0.109";
-    final int PORT = 5000;
+    final int PORT = 5050;
     JFrame frame;
     JPanel panel;
     Socket clientSocket;
@@ -43,6 +43,10 @@ public class Client implements Runnable{
         frame.add(panel);
         frame.setVisible(true);
         frame.setResizable(false);
+        
+        Player player = new Player();
+        ChatBox chatBox = new ChatBox();
+        DialogueOptions dialogueOptions = new DialogueOptions();
     }
     
     public void stop() throws Exception {

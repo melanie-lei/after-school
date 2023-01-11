@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Server {
-    final int PORT = 5000;
+    final int PORT = 5050;
 
     ServerSocket serverSocket;
     Socket clientSocket;
