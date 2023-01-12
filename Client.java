@@ -33,6 +33,7 @@ public class Client implements Runnable{
         output = new PrintWriter(clientSocket.getOutputStream());
         input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         System.out.println("Connection to server established!");
+        System.out.println(input.readLine());
 
         //establish graphics panel
         frame = new JFrame("GraphicsDemo");
@@ -49,6 +50,7 @@ public class Client implements Runnable{
         Player player = new Player();
         ChatBox chatBox = new ChatBox();
         DialogueOptions dialogueOptions = new DialogueOptions();
+        
     }
     
     public void stop() throws Exception {
