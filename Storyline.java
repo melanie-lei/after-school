@@ -9,6 +9,8 @@ public class Storyline {
         }
     }
     private static class PlotPoint {
+        boolean protagonistChoice;
+        int currentDialogue;
         String image;
         String id;
         ArrayList<PlotPoint> children = new ArrayList<>();
