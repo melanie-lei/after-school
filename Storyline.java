@@ -9,7 +9,7 @@ public class Storyline {
         }
     }
     private static class PlotPoint {
-        boolean protagonistChoice;
+        boolean isProtagonistChoice;
         int currentDialogue;
         String image;
         String id;

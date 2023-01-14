@@ -35,9 +35,13 @@ public class Client implements Runnable{
         System.out.println("Connection to server established!");
         System.out.println(input.readLine());
 
+        Player player = new Player();
+        ChatBox chatBox = new ChatBox();
+        DialogueOptions dialogueOptions = new DialogueOptions();
+        
         //establish graphics panel
         frame = new JFrame("GraphicsDemo");
-        panel = new GraphicsPanel();
+        panel = new GraphicsPanel(chatBox, dialogueOptions);
         frame.getContentPane().setPreferredSize(new Dimension(800, 600));
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,9 +51,7 @@ public class Client implements Runnable{
         frame.setVisible(true);
         frame.setResizable(false);
         
-        Player player = new Player();
-        ChatBox chatBox = new ChatBox();
-        DialogueOptions dialogueOptions = new DialogueOptions();
+       
         
     }
     
