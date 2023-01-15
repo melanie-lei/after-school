@@ -17,10 +17,7 @@ public class Storyline {
 
         tempPlot.isProtagonistChoice = false;
         tempPlot.id = ""+0;
-        try {
-            tempPlot.picture = ImageIO.read(new File("yes.png"));
-        }
-        catch (IOException ex){System.out.println("File not found!");}
+        tempPlot.picture ="yes.png";
         tempPlot.children.add(tempPlot2);
         tempPlot.children.add(tempPlot3);
         tempPlot.dialogue.add("grrrrr i like cheese");
@@ -43,12 +40,16 @@ public class Storyline {
     public ArrayList getDialogue(){
         return this.currentPoint.dialogue;
     }
+    
+    public String getImage(){
+        return this.currentPoint.picture;
+    }
     public void goNext(int weight){
       this.currentPoint = this.currentPoint.children.get(weight);
     }
     private static class PlotPoint {
         boolean isProtagonistChoice;
-        BufferedImage picture;
+        String picture;
         String id;
         ArrayList<PlotPoint> children = new ArrayList<>();
         ArrayList<String> dialogue = new ArrayList<>();

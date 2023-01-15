@@ -54,6 +54,7 @@ public class Client implements Runnable{
             dialogueOptions.setOptionA(storyline.getAntOptions().get(0).toString());
             dialogueOptions.setOptionB(storyline.getAntOptions().get(1).toString());
         }
+        scene.setImage(storyline.getImage());
         //establish graphics panel
         frame = new JFrame("GraphicsDemo");
         panel = new GraphicsPanel(chatBox, dialogueOptions, scene);
