@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class Client implements Runnable{
 
-    final String LOCAL_HOST = "192.168.12.11";
+    final String LOCAL_HOST = "192.168.2.21";
     final int PORT = 5050;
     JFrame frame;
     JPanel panel;
@@ -20,7 +20,7 @@ public class Client implements Runnable{
     BufferedReader input;
     String serverData;
     Player player;
-    Storyline storyline;
+    Storyline storyline = new Storyline();
     MyMouseListener mouseListener;
     int mouseClicked;
     int currentDialogue = 0;
