@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class Client implements Runnable{
 
-    final String LOCAL_HOST = "192.168.0.109";
+    final String LOCAL_HOST = "192.168.2.21";
     final int PORT = 5050;
     JFrame frame;
     JPanel panel;
