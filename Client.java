@@ -10,8 +10,7 @@ import java.net.Socket;
 import java.util.HashMap;
 
 public class Client implements Runnable{
-
-    final String LOCAL_HOST = "192.168.2.21";
+    final String LOCAL_HOST = "192.168.12.11";
     final int PORT = 5050;
     JFrame frame;
     JPanel panel;
@@ -19,11 +18,14 @@ public class Client implements Runnable{
     PrintWriter output;
     BufferedReader input;
     String serverData;
-    Player player;
     Storyline storyline = new Storyline();
-    MyMouseListener mouseListener;
-    int mouseClicked;
+    MyMouseListener mouseListener = new MyMouseListener();
+    int weight;
+    boolean mouseClicked;
     int currentDialogue = 0;
+    Player player = new Player();
+    ChatBox chatBox = new ChatBox();
+    Scene scene = new Scene();
     @Override
     public void run() {
         Client client = new Client();
@@ -40,10 +42,10 @@ public class Client implements Runnable{
         input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         System.out.println("Connection to server established!");
         System.out.println(input.readLine());
-
-        Player player = new Player();
-        ChatBox chatBox = new ChatBox();
-        Scene scene = new Scene();
+        if (mouseClicked = true) {
+            output.println(weight);
+            mouseClicked = false;
+        }
         DialogueOptions dialogueOptions = new DialogueOptions();
         scene.setDialogue(storyline.getDialogue().get(currentDialogue).toString());
         if(player.isProtagonist){
@@ -72,13 +74,17 @@ public class Client implements Runnable{
     public class MyMouseListener implements MouseListener{
         @Override
         public void mouseClicked(MouseEvent e) {
+            mouseClicked = true;
             if (e.getX() >= 100 && e.getX() <= 300 && e.getY() >= 300 && e.getY() <= 500){
-                mouseClicked = 0;
-                storyline.goNext(mouseClicked);
+                weight = 0;
+                scene.setDialogue(storyline.getDialogue().get(currentDialogue).toString());
+                storyline.goNext(weight);
+                System.out.println(e.getX()+", "+e.getY());
             }
             else if(e.getX() >= 400 && e.getX() <= 600 && e.getY() >= 300 && e.getY() <= 500){
-                mouseClicked = 1;
-                storyline.goNext(mouseClicked);
+                weight = 1;
+                scene.setDialogue(storyline.getDialogue().get(currentDialogue).toString());
+                storyline.goNext(weight);
             }
         }
         @Override

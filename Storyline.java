@@ -13,7 +13,6 @@ public class Storyline {
         PlotPoint tempPlot = new PlotPoint();
         PlotPoint tempPlot2 = new PlotPoint();
         PlotPoint tempPlot3 = new PlotPoint();
-        this.currentPoint = tempPlot;
 
         tempPlot.isProtagonistChoice = false;
         tempPlot.id = ""+0;
@@ -27,6 +26,10 @@ public class Storyline {
         tempPlot.proOptions.add("beef");
         tempPlot.antOptions.add("port");
         tempPlot.antOptions.add("bin");
+        tempPlot2.dialogue.add("no");
+        tempPlot3.dialogue.add("haha");
+
+        this.currentPoint = tempPlot;
     }
     public PlotPoint getCurrentPoint(){
         return this.currentPoint;
@@ -45,7 +48,8 @@ public class Storyline {
         return this.currentPoint.picture;
     }
     public void goNext(int weight){
-      this.currentPoint = this.currentPoint.children.get(weight);
+        this.currentPoint = this.currentPoint.children.get(weight);
+        System.out.println(this.currentPoint.dialogue.get(0));
     }
     private static class PlotPoint {
         boolean isProtagonistChoice;

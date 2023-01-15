@@ -20,6 +20,7 @@ public class Scene {
     // draw image and text
     public void draw(Graphics g){
         g.drawImage(this.image, 0, 0, null);
+        g.setFont(new Font("Times new Roman", Font.PLAIN, 18));
         g.drawString(this.dialogue,100, 100);
     }
 }
