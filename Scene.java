@@ -13,12 +13,13 @@ public class Scene {
         this.image = ImageIO.read(new File("images/" + imagePath));;
     }
     
-    public void setDialogue(String image){
+    public void setDialogue(String dialogue){
         this.dialogue = dialogue;
     }
     
     // draw image and text
     public void draw(Graphics g){
-        
+        g.drawImage(this.image, 0, 0, null);
+        g.drawString(this.dialogue,100, 100);
     }
 }

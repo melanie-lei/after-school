@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34a86cd9-fd97-4840-83a5-b70e0029d631" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/images/error.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/question_mark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/thumbs_down.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/thumbs_up.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChatBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChatBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DialogueOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/DialogueOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GraphicsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/GraphicsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/Scene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Storyline.java" beforeDir="false" afterPath="$PROJECT_DIR$/Storyline.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,11 +57,17 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pathVariables&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\lei31\OneDrive\Documents\GitHub\after-school\images" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="after-school" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -81,6 +96,7 @@
       <workItem from="1673292565558" duration="143000" />
       <workItem from="1673292725114" duration="432000" />
       <workItem from="1673293169779" duration="463000" />
+      <workItem from="1673551000204" duration="7187000" />
     </task>
     <servers />
   </component>

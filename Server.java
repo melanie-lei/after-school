@@ -9,7 +9,6 @@ import java.util.Queue;
 
 public class Server {
     final int PORT = 5050;
-
     int playerCount = 0;
     ServerSocket serverSocket;
     Socket clientSocket;
