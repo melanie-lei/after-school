@@ -4,6 +4,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.lang.reflect.Array;
@@ -12,7 +13,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Client implements Runnable{
-    final String LOCAL_HOST = "192.168.0.110";
+
+    final String LOCAL_HOST = "192.168.2.21";
+    
     final int PORT = 5050;
     JFrame frame;
     JPanel panel;
@@ -29,9 +32,15 @@ public class Client implements Runnable{
     ChatBox chatBox = new ChatBox();
     Scene scene = new Scene();
     DialogueOptions dialogueOptions = new DialogueOptions();
+
+    public Client() throws IOException {
+    }
+
     @Override
     public void run() {
-        Client client = new Client();
+        Client client = null;
+        try {client = new Client();} catch (IOException e) {throw new RuntimeException(e);}
+        
         try {
             client.localStart();
         } catch (Exception e) {throw new RuntimeException(e);}
@@ -70,6 +79,8 @@ public class Client implements Runnable{
         frame.setResizable(false);
         frame.addMouseListener(mouseListener);
         
+        player.name = playerCount;
+        
         while(true){
             try {Thread.sleep(20);} catch (InterruptedException e) {throw new RuntimeException(e);}
             
@@ -78,6 +89,7 @@ public class Client implements Runnable{
                 String[] in = input.readLine().split(" ");
                 if(in[0].equals("chat")){
                     //chat update
+                    chatBox.sendEmote(in[1], in[2]);
                 } else {
                     storyline.goNext(Integer.parseInt(in[0]));
                     scene.setDialogue(storyline.getDialogue());
@@ -91,14 +103,22 @@ public class Client implements Runnable{
     public class MyMouseListener implements MouseListener{
         @Override
         public void mouseClicked(MouseEvent e) {
+            int x = e.getX();
+            int y = e.getY();
             mouseClicked = true;
-            if (e.getX() >= 100 && e.getX() <= 300 && e.getY() >= 300 && e.getY() <= 500){
+            if (x >= 100 && x <= 300 && y >= 300 && y <= 500){
                 weight = 0;
                 output.println(player.isProtagonist + " 0");
             }
-            else if(e.getX() >= 400 && e.getX() <= 600 && e.getY() >= 300 && e.getY() <= 500){
+            else if(x >= 400 && x <= 600 && y >= 300 && y <= 500){
                 weight = 1;
                 output.println(player.isProtagonist + " 1");
+            } else if(chatBox.clickedGood(x, y)){
+                output.println("chat good " + player.name);
+            } else if(chatBox.clickedBad(x, y)){
+                output.println("chat bad " + player.name);
+            } else if(chatBox.clickedQuestion(x, y)){
+                output.println("chat question " + player.name);
             }
             else{
                 storyline.progressDialogue();

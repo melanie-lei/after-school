@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -78,6 +79,7 @@ public class Server {
                         System.out.println(data[0]);
                         if(data[0].equals("chat")){
                             // chat things
+                            sendData(String.join(" ", data));
                         } else {
                             if(data[0].equals("true")){ // protagonist
                                 choices[0] = data[1];
