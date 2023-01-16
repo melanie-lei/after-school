@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Client implements Runnable{
-    final String LOCAL_HOST = "192.168.2.21";
+    final String LOCAL_HOST = "192.168.0.110";
     final int PORT = 5050;
     JFrame frame;
     JPanel panel;
@@ -60,7 +60,7 @@ public class Client implements Runnable{
         //establish graphics panel
         frame = new JFrame("GraphicsDemo");
         panel = new GraphicsPanel(chatBox, dialogueOptions, scene);
-        frame.getContentPane().setPreferredSize(new Dimension(800, 600));
+        frame.getContentPane().setPreferredSize(new Dimension(Const.WIDTH, Const.HEIGHT));
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         panel.setFocusable(true);
