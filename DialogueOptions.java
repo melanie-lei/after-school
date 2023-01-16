@@ -1,15 +1,14 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 public class DialogueOptions {
     String optionA;
     String optionB;
     
     // set choices
-    public void setOptionA(String a){
-        this.optionA = a;
-    }
-    public void setOptionB(String b){
-        this.optionB = b;
+    public void setOptions(ArrayList<String> options){
+        this.optionA = (String) options.get(0);
+        this.optionB = (String) options.get(1);
     }
     
     // draw the choices

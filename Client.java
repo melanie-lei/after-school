@@ -6,11 +6,13 @@ import java.awt.event.MouseListener;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.lang.reflect.Array;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Client implements Runnable{
-    final String LOCAL_HOST = "192.168.12.11";
+    final String LOCAL_HOST = "192.168.2.21";
     final int PORT = 5050;
     JFrame frame;
     JPanel panel;
@@ -22,10 +24,11 @@ public class Client implements Runnable{
     MyMouseListener mouseListener = new MyMouseListener();
     int weight;
     boolean mouseClicked;
-    int currentDialogue = 0;
     Player player = new Player();
+    
     ChatBox chatBox = new ChatBox();
     Scene scene = new Scene();
+    DialogueOptions dialogueOptions = new DialogueOptions();
     @Override
     public void run() {
         Client client = new Client();
@@ -41,22 +44,19 @@ public class Client implements Runnable{
         output = new PrintWriter(clientSocket.getOutputStream());
         input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         System.out.println("Connection to server established!");
-        System.out.println(input.readLine());
-        if (mouseClicked = true) {
-            output.println(weight);
-            mouseClicked = false;
+        
+        String playerCount = input.readLine();
+        if(playerCount.equals("1")){
+            player.isProtagonist = true;
+        } else {
+            player.isProtagonist = false;
         }
-        DialogueOptions dialogueOptions = new DialogueOptions();
-        scene.setDialogue(storyline.getDialogue().get(currentDialogue).toString());
-        if(player.isProtagonist){
-            dialogueOptions.setOptionA(storyline.getProOptions().get(0).toString());
-            dialogueOptions.setOptionB(storyline.getProOptions().get(1).toString());
-        }
-        else{
-            dialogueOptions.setOptionA(storyline.getAntOptions().get(0).toString());
-            dialogueOptions.setOptionB(storyline.getAntOptions().get(1).toString());
-        }
+       
+        // drawing everything of first scene
+        scene.setDialogue(storyline.getDialogue());
+        dialogueOptions.setOptions(storyline.getOptions(player));
         scene.setImage(storyline.getImage());
+        
         //establish graphics panel
         frame = new JFrame("GraphicsDemo");
         panel = new GraphicsPanel(chatBox, dialogueOptions, scene);
@@ -69,6 +69,23 @@ public class Client implements Runnable{
         frame.setVisible(true);
         frame.setResizable(false);
         frame.addMouseListener(mouseListener);
+        
+        while(true){
+            try {Thread.sleep(20);} catch (InterruptedException e) {throw new RuntimeException(e);}
+            
+            // receives input from server
+            if(input.ready()){
+                String[] in = input.readLine().split(" ");
+                if(in[0].equals("chat")){
+                    //chat update
+                } else {
+                    storyline.goNext(Integer.parseInt(in[0]));
+                    scene.setDialogue(storyline.getDialogue());
+                    dialogueOptions.setOptions(storyline.getOptions(player));
+                }
+            }
+            frame.repaint();
+        }
     }
 
     public class MyMouseListener implements MouseListener{
@@ -77,15 +94,20 @@ public class Client implements Runnable{
             mouseClicked = true;
             if (e.getX() >= 100 && e.getX() <= 300 && e.getY() >= 300 && e.getY() <= 500){
                 weight = 0;
-                scene.setDialogue(storyline.getDialogue().get(currentDialogue).toString());
-                storyline.goNext(weight);
-                System.out.println(e.getX()+", "+e.getY());
+                output.println(player.isProtagonist + " 0");
             }
             else if(e.getX() >= 400 && e.getX() <= 600 && e.getY() >= 300 && e.getY() <= 500){
                 weight = 1;
-                scene.setDialogue(storyline.getDialogue().get(currentDialogue).toString());
-                storyline.goNext(weight);
+                output.println(player.isProtagonist + " 1");
             }
+            else{
+                storyline.progressDialogue();
+                scene.setDialogue(storyline.getDialogue());
+            }
+            output.flush();
+            // update dialogue and options
+            
+            
         }
         @Override
         public void mousePressed(MouseEvent e) {}
