@@ -77,7 +77,7 @@ public class Client implements Runnable{
         frame.add(panel);
         frame.setVisible(true);
         frame.setResizable(false);
-        frame.addMouseListener(mouseListener);
+        frame.getContentPane().addMouseListener(mouseListener);
         
         player.name = playerCount;
         
