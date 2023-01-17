@@ -25,20 +25,26 @@ public class ChatBox {
     }
 
     public void draw(Graphics g){
-        g.setColor(Color.yellow);
-        g.fillRect(x,y, width, height);
+        g.setColor(Const.BACKGROUND_COLOR);
+        g.fillRoundRect(x,y, width, height+emoteDim, 50, 50);
         int count = 0;
         for(Emote emote : emotes){
             g.setColor(Color.black);
-            g.drawString(emote.playerName, x, y+count);
-            g.drawImage(emote.image, x+width-emoteDim, y+count, emoteDim, emoteDim, null);
+            g.drawString(emote.playerName, x+Const.MARGIN, y+count+emoteDim/2);
+            drawEmoteWithMargin(g, emote.image, x, y, count);
             count+=emoteDim;
         }
-        g.setColor(Color.blue);
-        g.fillRect(x, y+height, width, emoteDim);
-        g.drawImage(goodEmote, x, y+height, emoteDim, emoteDim, null);
-        g.drawImage(badEmote, x + emoteDim, y+height, emoteDim, emoteDim, null);
-        g.drawImage(questionEmote, x + emoteDim*2, y+height, emoteDim, emoteDim, null);
+        g.setColor(Const.FOREGROUND_COLOR);
+        drawEmoteWithMargin(g, goodEmote, 0);
+        drawEmoteWithMargin(g, badEmote, 1);
+        drawEmoteWithMargin(g, questionEmote, 2);
+    }
+    void drawEmoteWithMargin(Graphics g, BufferedImage emote, int x, int y, int count){
+        g.drawImage(emote, x+width-emoteDim + Const.MARGIN, y+count+Const.MARGIN, emoteDim - Const.MARGIN*2, emoteDim - Const.MARGIN*2, null);
+    }
+    void drawEmoteWithMargin(Graphics g, BufferedImage emote, int num){
+        g.fillRoundRect(x + emoteDim*num + Const.MARGIN/2, y+height + Const.MARGIN/2, emoteDim-Const.MARGIN, emoteDim-Const.MARGIN, 50, 50);
+        g.drawImage(emote, x + emoteDim*num + Const.MARGIN, y+height + Const.MARGIN, emoteDim - Const.MARGIN*2, emoteDim - Const.MARGIN*2, null);
     }
     
     public void sendEmote(String emoteStr, String playerName) throws IOException {
