@@ -23,6 +23,14 @@ public final class Const {
     public static final int PROTAG_X = 64 * mult;
     public static final int PLAYER_Y = 29 * mult;
     public static final int PLAYER_SIZE = 16 * mult;
+    public static final int DIALOGUE_X = 20 * mult;
+    public static final int DIALOGUE_Y = 36 * mult;
+    public static final int DIALOGUE_WIDTH = 40 * mult;
+    public static final int DIALOGUE_HEIGHT = 5 * mult;
+    public static final int NEXT_X = 56 * mult;
+    public static final int NEXT_Y = 40 * mult;
+    public static final int NEXT_WIDTH = 4 * mult;
+    public static final int NEXT_HEIGHT = 2 * mult;
     public static final Color BACKGROUND_COLOR = new Color(216, 223, 234);
     public static final Color FOREGROUND_COLOR = new Color(196, 200, 225);
 }

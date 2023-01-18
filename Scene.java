@@ -20,7 +20,12 @@ public class Scene {
     // draw image and text
     public void draw(Graphics g){
         g.drawImage(this.image, 0, 0, Const.WIDTH, Const.HEIGHT, null);
-        g.setFont(new Font("Times new Roman", Font.PLAIN, 18));
-        g.drawString(this.dialogue,100, 100);
+        g.setFont(new Font("Times new Roman", Font.PLAIN, Const.FONT_SIZE));
+        g.setColor(Const.BACKGROUND_COLOR);
+        g.fillRoundRect(Const.DIALOGUE_X, Const.DIALOGUE_Y, Const.DIALOGUE_WIDTH, Const.DIALOGUE_HEIGHT, 50, 50);
+        g.setColor(Color.black);
+        g.drawString(this.dialogue, Const.DIALOGUE_X + Const.FONT_SIZE, Const.DIALOGUE_Y + Const.FONT_SIZE);
+
+        g.fillRoundRect(Const.NEXT_X, Const.NEXT_Y, Const.NEXT_WIDTH, Const.NEXT_HEIGHT, 10, 10);
     }
 }
