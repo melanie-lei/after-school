@@ -20,6 +20,9 @@ public final class Const {
     public static final int BUTTON2_Y = BUTTON1_Y + BUTTON_HEIGHT + (int)(1.5 * mult);
     public static final int MARGIN = 10;
     public static final int FONT_SIZE = mult;
+    public static final int PROTAG_X = 64 * mult;
+    public static final int PLAYER_Y = 29 * mult;
+    public static final int PLAYER_SIZE = 16 * mult;
     public static final Color BACKGROUND_COLOR = new Color(216, 223, 234);
     public static final Color FOREGROUND_COLOR = new Color(196, 200, 225);
 }
