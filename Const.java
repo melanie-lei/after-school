@@ -11,8 +11,15 @@ public final class Const {
     public static final int CHAT_Y = 2 * mult;
     public static final int EMOTE_DIMENSION = CHAT_WIDTH/3;
     public static final int OPTIONS_X = 64 * mult;
-    public static final int OPTIONS_Y = 2 * mult
+    public static final int OPTIONS_Y = 2 * mult;
+    public static final int OPTIONS_WIDTH = 14 * mult;
+    public static final int BUTTON_HEIGHT = 4 * mult;
+    public static final int BUTTON_WIDTH = 10 * mult;
+    public static final int BUTTON1_X = 66 * mult;
+    public static final int BUTTON1_Y = 5 * mult;
+    public static final int BUTTON2_Y = BUTTON1_Y + BUTTON_HEIGHT + (int)(1.5 * mult);
     public static final int MARGIN = 10;
+    public static final int FONT_SIZE = mult;
     public static final Color BACKGROUND_COLOR = new Color(216, 223, 234);
     public static final Color FOREGROUND_COLOR = new Color(196, 200, 225);
 }

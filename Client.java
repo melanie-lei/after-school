@@ -14,8 +14,7 @@ import java.util.HashMap;
 
 public class Client implements Runnable{
 
-    final String LOCAL_HOST = "192.168.2.21";
-    
+    final String LOCAL_HOST = "192.168.12.5";
     final int PORT = 5050;
     JFrame frame;
     JPanel panel;
@@ -26,9 +25,7 @@ public class Client implements Runnable{
     Storyline storyline = new Storyline();
     MyMouseListener mouseListener = new MyMouseListener();
     int weight;
-    boolean mouseClicked;
     Player player = new Player();
-    
     ChatBox chatBox = new ChatBox();
     Scene scene = new Scene();
     DialogueOptions dialogueOptions = new DialogueOptions();
@@ -105,13 +102,9 @@ public class Client implements Runnable{
         public void mouseClicked(MouseEvent e) {
             int x = e.getX();
             int y = e.getY();
-            mouseClicked = true;
-            if (x >= 100 && x <= 300 && y >= 300 && y <= 500){
-                weight = 0;
+            if (dialogueOptions.clicked0(x, y)){
                 output.println(player.isProtagonist + " 0");
-            }
-            else if(x >= 400 && x <= 600 && y >= 300 && y <= 500){
-                weight = 1;
+            } else if(dialogueOptions.clicked1(x, y)){
                 output.println(player.isProtagonist + " 1");
             } else if(chatBox.clickedGood(x, y)){
                 output.println("chat good " + player.name);
