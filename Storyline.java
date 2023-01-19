@@ -11,9 +11,9 @@ public class Storyline {
     Storyline(){
         int id = 0;
         //make a plot point and display
-        PlotPoint tempPlot = new PlotPoint(true, id++, "yes.png", "plot1 proOpt1", "plot1 proOpt2", "plot1 antOpt1", "antOpt2");
-        PlotPoint tempPlot2 = new PlotPoint(true, id++, "yes.png", "plot2 proOpt1", "proOpt2", "plot2 antOpt1", "antOpt2");
-        PlotPoint tempPlot3 = new PlotPoint(false, id++, "yes.png", "plot3 proOpt1", "proOpt2", "plot3 antOpt1", "antOpt2");
+        PlotPoint tempPlot = new PlotPoint(true, id++, "classroom.jpg", "plot1 proOpt1", "plot1 proOpt2", "plot1 antOpt1", "antOpt2");
+        PlotPoint tempPlot2 = new PlotPoint(true, id++, "library.png", "plot2 proOpt1", "proOpt2", "plot2 antOpt1", "antOpt2");
+        PlotPoint tempPlot3 = new PlotPoint(false, id++, "melanie_dead.png", "plot3 proOpt1", "proOpt2", "plot3 antOpt1", "antOpt2");
 
 
         tempPlot.dialogue.add("grrrrr i like cheese");
@@ -45,13 +45,17 @@ public class Storyline {
         return this.currentPoint.dialogue.get(currentPoint.dialogueCount);
     }
     public void progressDialogue(){
-        currentPoint.dialogueCount++;
+        if(currentPoint.dialogueCount < currentPoint.dialogue.size()-1) {
+            currentPoint.dialogueCount++;
+        }
     }
     public String getImage(){
         return this.currentPoint.picture;
     }
     public void goNext(int weight){
-        this.currentPoint = this.currentPoint.children.get(weight);
+        if(!this.currentPoint.children.isEmpty()) {
+            this.currentPoint = this.currentPoint.children.get(weight);
+        }
     }
     private static class PlotPoint {
         boolean isProtagonistChoice;
