@@ -63,9 +63,6 @@ public class Storyline {
     public boolean isProtagonistChoice(){
         return this.currentPoint.isProtagonistChoice;
     }
-    public PlotPoint getCurrentPoint(){
-        return this.currentPoint;
-    }
     
     public String getAntNotes(){
         return this.currentPoint.antNotes;
