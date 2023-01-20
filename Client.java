@@ -1,8 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,15 +11,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Client implements Runnable{
-
-    final String LOCAL_HOST = "192.168.244.210";
+    final String LOCAL_HOST = "192.168.0.110";
     final int PORT = 5050;
     JFrame frame;
     JPanel panel;
+    JPanel startingScreen;
+    JButton startingButton;
+    JTextField playerInput;
     Socket clientSocket;
     PrintWriter output;
     BufferedReader input;
     String serverData;
+    static boolean gameStarted;
     Storyline storyline = new Storyline();
     MyMouseListener mouseListener = new MyMouseListener();
     int weight;
@@ -30,10 +31,8 @@ public class Client implements Runnable{
     Scene scene = new Scene();
     DialogueOptions dialogueOptions = new DialogueOptions();
     AntagonistNotes antNotes = new AntagonistNotes();
-    
     JLabel note = new JLabel();
-    
-
+    ActionListener startButtonListener;
     public Client() throws IOException {
     }
 
@@ -68,6 +67,7 @@ public class Client implements Runnable{
         
         //establish graphics panel
         frame = new JFrame("GraphicsDemo");
+        startingScreen = new JPanel();
         panel = new GraphicsPanel(chatBox, dialogueOptions, scene, antNotes);
         frame.getContentPane().setPreferredSize(new Dimension(Const.WIDTH, Const.HEIGHT));
         frame.pack();
@@ -76,16 +76,22 @@ public class Client implements Runnable{
         panel.setLayout(null);
         panel.setFocusable(true);
         panel.requestFocus();
-        frame.add(panel);
+
+        startingButton = new JButton("Start");
+        startingScreen.setLayout(new FlowLayout());
+        startButtonListener = new startButtonListener();
+        startingButton.addActionListener(startButtonListener);
+        startingScreen.add(startingButton);
+        startingScreen.setBackground(Color.black);
+
+        frame.add(startingScreen);
 
         note.setBounds(Const.NOTES_X + Const.MARGIN, Const.NOTES_Y, Const.NOTES_WIDTH, Const.NOTES_HEIGHT);
         panel.add(note);
         
         frame.setVisible(true);
-        frame.setResizable(false);
+        frame.setResizable(true);
         frame.getContentPane().addMouseListener(mouseListener);
-
-        
         
         player.name = playerCount;
         
@@ -116,7 +122,15 @@ public class Client implements Runnable{
             frame.repaint();
         }
     }
-
+    public class startButtonListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e){
+            frame.remove(startingScreen);
+            frame.add(panel);
+            panel.setVisible(true);
+            frame.repaint();
+        }
+    }
     public class MyMouseListener implements MouseListener{
         @Override
         public void mouseClicked(MouseEvent e) {

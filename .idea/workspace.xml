@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34a86cd9-fd97-4840-83a5-b70e0029d631" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/images/antagonist_scary.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Storyline.java" beforeDir="false" afterPath="$PROJECT_DIR$/Storyline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/after-school/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/after-school/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/after-school/Const.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Const.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/after-school/Scene.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Scene.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
