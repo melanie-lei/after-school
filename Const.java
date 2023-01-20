@@ -14,6 +14,10 @@ public final class Const {
     public static final int OPTIONS_X = 64 * mult;
     public static final int OPTIONS_Y = 2 * mult;
     public static final int OPTIONS_WIDTH = 14 * mult;
+    public static final int NOTES_WIDTH = 14*mult;
+    public static final int NOTES_HEIGHT = 8 * mult;
+    public static final int NOTES_X = 64 * mult;
+    public static final int NOTES_Y = 17 * mult;
     public static final int BUTTON_HEIGHT = 4 * mult;
     public static final int BUTTON_WIDTH = 10 * mult;
     public static final int BUTTON1_X = 66 * mult;

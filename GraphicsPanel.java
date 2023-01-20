@@ -9,12 +9,14 @@ public class GraphicsPanel extends JPanel {
     DialogueOptions dialogueOptions;
     ChatBox chatBox;
     Scene scene;
+    AntagonistNotes antNotes;
     BufferedImage protagonist;
     BufferedImage antagonist;
-    GraphicsPanel(ChatBox chat, DialogueOptions dialogue, Scene scene) throws IOException {
+    GraphicsPanel(ChatBox chat, DialogueOptions dialogue, Scene scene, AntagonistNotes antNotes) throws IOException {
         this.chatBox = chat;
         this.dialogueOptions = dialogue;
         this.scene = scene;
+        this.antNotes = antNotes;
         this.protagonist = ImageIO.read(new File("images/" + "protagonist.png"));
         this.antagonist = ImageIO.read(new File("images/" + "antagonist.png"));
     }
@@ -24,6 +26,7 @@ public class GraphicsPanel extends JPanel {
         scene.draw(g);
         dialogueOptions.draw(g);
         chatBox.draw(g);
+        antNotes.draw(g);
         g.drawImage(this.protagonist,Const.PROTAG_X, Const.PLAYER_Y, Const.PLAYER_SIZE, Const.PLAYER_SIZE, null);
         g.drawImage(this.antagonist,0, Const.PLAYER_Y, Const.PLAYER_SIZE, Const.PLAYER_SIZE, null);
     }
