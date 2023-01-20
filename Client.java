@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -33,6 +34,7 @@ public class Client implements Runnable{
     AntagonistNotes antNotes = new AntagonistNotes();
     JLabel note = new JLabel();
     ActionListener startButtonListener;
+    BufferedImage title;
     public Client() throws IOException {
     }
 
@@ -76,8 +78,9 @@ public class Client implements Runnable{
         panel.setLayout(null);
         panel.setFocusable(true);
         panel.requestFocus();
-
+        
         JLabel title = new JLabel(new ImageIcon("images/yes.png"));
+        //grah
         startingButton = new JButton("Start");
         startingScreen.setLayout(new FlowLayout());
         startButtonListener = new startButtonListener();
@@ -120,7 +123,6 @@ public class Client implements Runnable{
             } else {
                 note.setVisible(false);
             }
-            
             frame.repaint();
         }
     }
@@ -130,7 +132,8 @@ public class Client implements Runnable{
             frame.remove(startingScreen);
             frame.add(panel);
             panel.setVisible(true);
-            panel.repaint();
+            frame.validate();
+            frame.repaint();
         }
     }
     public class MyMouseListener implements MouseListener{
