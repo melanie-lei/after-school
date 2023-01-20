@@ -1,4 +1,4 @@
 public class Player {
     String name;
-    boolean isProtagonist;
+    boolean isProtagonist = false;
 }

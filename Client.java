@@ -14,7 +14,7 @@ import java.util.HashMap;
 
 public class Client implements Runnable{
 
-    final String LOCAL_HOST = "192.168.0.110";
+    final String LOCAL_HOST = "192.168.244.210";
     final int PORT = 5050;
     JFrame frame;
     JPanel panel;
@@ -29,6 +29,10 @@ public class Client implements Runnable{
     ChatBox chatBox = new ChatBox();
     Scene scene = new Scene();
     DialogueOptions dialogueOptions = new DialogueOptions();
+    AntagonistNotes antNotes = new AntagonistNotes();
+    
+    JLabel note = new JLabel();
+    
 
     public Client() throws IOException {
     }
@@ -54,8 +58,7 @@ public class Client implements Runnable{
         String playerCount = input.readLine();
         if(playerCount.equals("1")){
             player.isProtagonist = true;
-        } else {
-            player.isProtagonist = false;
+            antNotes.draw = false;
         }
        
         // drawing everything of first scene
@@ -65,16 +68,24 @@ public class Client implements Runnable{
         
         //establish graphics panel
         frame = new JFrame("GraphicsDemo");
-        panel = new GraphicsPanel(chatBox, dialogueOptions, scene);
+        panel = new GraphicsPanel(chatBox, dialogueOptions, scene, antNotes);
         frame.getContentPane().setPreferredSize(new Dimension(Const.WIDTH, Const.HEIGHT));
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        panel.setLayout(null);
         panel.setFocusable(true);
         panel.requestFocus();
         frame.add(panel);
+
+        note.setBounds(Const.NOTES_X + Const.MARGIN, Const.NOTES_Y, Const.NOTES_WIDTH, Const.NOTES_HEIGHT);
+        panel.add(note);
+        
         frame.setVisible(true);
         frame.setResizable(false);
         frame.getContentPane().addMouseListener(mouseListener);
+
+        
         
         player.name = playerCount;
         
@@ -93,6 +104,15 @@ public class Client implements Runnable{
                     dialogueOptions.setOptions(storyline.getOptions(player));
                 }
             }
+            // draw antagonist notes
+            if(!player.isProtagonist){
+                antNotes.text = storyline.getAntNotes();
+                note.setText(String.format("<html><div WIDTH=%d>%s</div></html>", Const.NOTES_WIDTH, antNotes.text));
+                note.setVisible(true);
+            } else {
+                note.setVisible(false);
+            }
+            
             frame.repaint();
         }
     }

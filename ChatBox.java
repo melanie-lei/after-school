@@ -26,7 +26,7 @@ public class ChatBox {
 
     public void draw(Graphics g){
         g.setColor(Const.BACKGROUND_COLOR);
-        g.fillRoundRect(x,y, width, height+emoteDim, 50, 50);
+        g.fillRoundRect(x,y-Const.CHAT_TITLE_MARGIN, width, height+emoteDim+Const.CHAT_TITLE_MARGIN, 50, 50);
         int count = 0;
         for(Emote emote : emotes){
             g.setColor(Color.black);
@@ -38,6 +38,9 @@ public class ChatBox {
         drawEmoteWithMargin(g, goodEmote, 0);
         drawEmoteWithMargin(g, badEmote, 1);
         drawEmoteWithMargin(g, questionEmote, 2);
+        g.setColor(Color.black);
+        g.setFont(new Font("Times new Roman", Font.PLAIN, Const.FONT_SIZE));
+        g.drawString("CHAT BOX", x + Const.MARGIN, y + Const.MARGIN);
     }
     void drawEmoteWithMargin(Graphics g, BufferedImage emote, int x, int y, int count){
         g.drawImage(emote, x+width-emoteDim + Const.MARGIN, y+count+Const.MARGIN, emoteDim - Const.MARGIN*2, emoteDim - Const.MARGIN*2, null);
