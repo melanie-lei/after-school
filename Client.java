@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Client implements Runnable{
-    final String LOCAL_HOST = "192.168.0.110";
+    final String LOCAL_HOST = "192.168.0.109";
     final int PORT = 5050;
     JFrame frame;
     JPanel panel;
@@ -77,11 +77,13 @@ public class Client implements Runnable{
         panel.setFocusable(true);
         panel.requestFocus();
 
+        JLabel title = new JLabel(new ImageIcon("images/yes.png"));
         startingButton = new JButton("Start");
         startingScreen.setLayout(new FlowLayout());
         startButtonListener = new startButtonListener();
         startingButton.addActionListener(startButtonListener);
         startingScreen.add(startingButton);
+        startingScreen.add(title);
         startingScreen.setBackground(Color.black);
 
         frame.add(startingScreen);
@@ -90,8 +92,8 @@ public class Client implements Runnable{
         panel.add(note);
         
         frame.setVisible(true);
-        frame.setResizable(true);
-        frame.getContentPane().addMouseListener(mouseListener);
+        frame.setResizable(false);
+        panel.addMouseListener(mouseListener);
         
         player.name = playerCount;
         
@@ -128,7 +130,7 @@ public class Client implements Runnable{
             frame.remove(startingScreen);
             frame.add(panel);
             panel.setVisible(true);
-            frame.repaint();
+            panel.repaint();
         }
     }
     public class MyMouseListener implements MouseListener{
