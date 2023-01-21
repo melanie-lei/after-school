@@ -24,7 +24,7 @@ public class Storyline {
         String[] line;
         ArrayList<String> data;
         while(file.hasNextLine()){
-            line = file.nextLine().split(", ");
+            line = file.nextLine().split("/ ");
             data = new ArrayList<>(Arrays.asList(line));
             if(!data.get(0).equals("map")){
                 plotpoint = new PlotPoint(data.get(1).equals("1"), id++, data.get(2), data.get(3), data.get(4), data.get(5), data.get(6), data.get(7));
@@ -47,6 +47,12 @@ public class Storyline {
             }
         }
         
+        for(PlotPoint point : allPoints){
+            if(point.children.size() == 0){
+                point.isEnd = true;
+            }
+        }
+        
         
         this.currentPoint = getPlotPoint(1);
     }
@@ -59,6 +65,9 @@ public class Storyline {
             tempNode = allPoints.get(i);
         }
         return tempNode;
+    }
+    public boolean isEnd(){
+        return this.currentPoint.isEnd;
     }
     public boolean isProtagonistChoice(){
         return this.currentPoint.isProtagonistChoice;
@@ -89,6 +98,7 @@ public class Storyline {
         }
     }
     private static class PlotPoint {
+        boolean isEnd = false;
         boolean isProtagonistChoice;
         String picture;
         int id;

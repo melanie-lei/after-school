@@ -26,7 +26,6 @@ public class Client implements Runnable{
     static boolean gameStarted;
     Storyline storyline = new Storyline();
     MyMouseListener mouseListener = new MyMouseListener();
-    int weight;
     Player player = new Player();
     ChatBox chatBox = new ChatBox();
     Scene scene = new Scene();
@@ -34,6 +33,7 @@ public class Client implements Runnable{
     AntagonistNotes antNotes = new AntagonistNotes();
     ActionListener startButtonListener;
     BufferedImage title;
+
     public Client() throws IOException {
     }
 
@@ -114,6 +114,12 @@ public class Client implements Runnable{
             // draw antagonist notes
             if(!player.isProtagonist){
                 antNotes.setText(storyline.getAntNotes());
+            }
+            
+            if(storyline.isEnd()){
+                dialogueOptions.draw = false;
+                chatBox.draw = false;
+                antNotes.draw = false;
             }
             frame.repaint();
         }

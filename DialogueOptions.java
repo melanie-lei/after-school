@@ -8,6 +8,7 @@ public class DialogueOptions {
     
     ArrayList<String> optionAWrap = new ArrayList<>();
     ArrayList<String> optionBWrap = new ArrayList<>();
+    boolean draw = true;
     
     // set choices
     public void setOptions(ArrayList<String> options){
@@ -17,23 +18,25 @@ public class DialogueOptions {
     
     // draw the choices
     public void draw(Graphics g){
-        //draw options box
-        g.setColor(Const.BACKGROUND_COLOR);
-        g.fillRoundRect(Const.OPTIONS_X,Const.OPTIONS_Y, Const.OPTIONS_WIDTH, Const.OPTIONS_WIDTH, 50, 50);
-        g.setFont(new Font("Times", Font.PLAIN, 18));
-        g.setColor(Const.FOREGROUND_COLOR);
-        g.fillRoundRect( Const.BUTTON1_X, Const.BUTTON1_Y, Const.BUTTON_WIDTH, Const.BUTTON_HEIGHT, 10, 10);
-        g.fillRoundRect(Const.BUTTON1_X, Const.BUTTON2_Y, Const.BUTTON_WIDTH, Const.BUTTON_HEIGHT, 10, 10);
-        g.setColor(Color.black);
-        g.setFont(new Font("Times new Roman", Font.PLAIN, Const.FONT_SIZE));
+        if(draw) {
+            //draw options box
+            g.setColor(Const.BACKGROUND_COLOR);
+            g.fillRoundRect(Const.OPTIONS_X, Const.OPTIONS_Y, Const.OPTIONS_WIDTH, Const.OPTIONS_WIDTH, 50, 50);
+            g.setFont(new Font("Times", Font.PLAIN, 18));
+            g.setColor(Const.FOREGROUND_COLOR);
+            g.fillRoundRect(Const.BUTTON1_X, Const.BUTTON1_Y, Const.BUTTON_WIDTH, Const.BUTTON_HEIGHT, 10, 10);
+            g.fillRoundRect(Const.BUTTON1_X, Const.BUTTON2_Y, Const.BUTTON_WIDTH, Const.BUTTON_HEIGHT, 10, 10);
+            g.setColor(Color.black);
+            g.setFont(new Font("Times new Roman", Font.PLAIN, Const.FONT_SIZE));
 
-        optionAWrap = Text.wrap(this.optionA, Const.BUTTON_WIDTH, g);
-        optionBWrap = Text.wrap(this.optionB, Const.BUTTON_WIDTH, g);
-        for(String str : this.optionAWrap){
-            g.drawString(str, Const.BUTTON1_X + Const.FONT_SIZE, Const.BUTTON1_Y + Const.FONT_SIZE*(this.optionAWrap.indexOf(str)+1));
-        }
-        for(String str : this.optionBWrap){
-            g.drawString(str, Const.BUTTON1_X + Const.FONT_SIZE, Const.BUTTON2_Y + Const.FONT_SIZE*(this.optionBWrap.indexOf(str)+1));
+            optionAWrap = Text.wrap(this.optionA, Const.BUTTON_WIDTH, g);
+            optionBWrap = Text.wrap(this.optionB, Const.BUTTON_WIDTH, g);
+            for (String str : this.optionAWrap) {
+                g.drawString(str, Const.BUTTON1_X + Const.FONT_SIZE, Const.BUTTON1_Y + Const.FONT_SIZE * (this.optionAWrap.indexOf(str) + 1));
+            }
+            for (String str : this.optionBWrap) {
+                g.drawString(str, Const.BUTTON1_X + Const.FONT_SIZE, Const.BUTTON2_Y + Const.FONT_SIZE * (this.optionBWrap.indexOf(str) + 1));
+            }
         }
     }
     

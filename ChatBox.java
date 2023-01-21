@@ -12,6 +12,7 @@ public class ChatBox {
     int x = Const.CHAT_X;
     int y = Const.CHAT_Y;
     int emoteDim = Const.EMOTE_DIMENSION;
+    boolean draw = true;
     
         
     BufferedImage goodEmote = ImageIO.read(new File("images/thumbs_up.png"));
@@ -25,22 +26,24 @@ public class ChatBox {
     }
 
     public void draw(Graphics g){
-        g.setColor(Const.BACKGROUND_COLOR);
-        g.fillRoundRect(x,y-Const.CHAT_TITLE_MARGIN, width, height+emoteDim+Const.CHAT_TITLE_MARGIN, 50, 50);
-        int count = 0;
-        for(Emote emote : emotes){
+        if(draw) {
+            g.setColor(Const.BACKGROUND_COLOR);
+            g.fillRoundRect(x, y - Const.CHAT_TITLE_MARGIN, width, height + emoteDim + Const.CHAT_TITLE_MARGIN, 50, 50);
+            int count = 0;
+            for (Emote emote : emotes) {
+                g.setColor(Color.black);
+                g.drawString(emote.playerName, x + Const.MARGIN, y + count + emoteDim / 2);
+                drawEmoteWithMargin(g, emote.image, x, y, count);
+                count += emoteDim;
+            }
+            g.setColor(Const.FOREGROUND_COLOR);
+            drawEmoteWithMargin(g, goodEmote, 0);
+            drawEmoteWithMargin(g, badEmote, 1);
+            drawEmoteWithMargin(g, questionEmote, 2);
             g.setColor(Color.black);
-            g.drawString(emote.playerName, x+Const.MARGIN, y+count+emoteDim/2);
-            drawEmoteWithMargin(g, emote.image, x, y, count);
-            count+=emoteDim;
+            g.setFont(new Font("Times new Roman", Font.PLAIN, Const.FONT_SIZE));
+            g.drawString("CHAT BOX", x + Const.MARGIN, y + Const.MARGIN);
         }
-        g.setColor(Const.FOREGROUND_COLOR);
-        drawEmoteWithMargin(g, goodEmote, 0);
-        drawEmoteWithMargin(g, badEmote, 1);
-        drawEmoteWithMargin(g, questionEmote, 2);
-        g.setColor(Color.black);
-        g.setFont(new Font("Times new Roman", Font.PLAIN, Const.FONT_SIZE));
-        g.drawString("CHAT BOX", x + Const.MARGIN, y + Const.MARGIN);
     }
     void drawEmoteWithMargin(Graphics g, BufferedImage emote, int x, int y, int count){
         g.drawImage(emote, x+width-emoteDim + Const.MARGIN, y+count+Const.MARGIN, emoteDim - Const.MARGIN*2, emoteDim - Const.MARGIN*2, null);
