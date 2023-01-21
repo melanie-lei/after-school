@@ -34,4 +34,5 @@ public final class Const {
     public static final int DIALOGUE_HEIGHT = 5 * mult;
     public static final Color BACKGROUND_COLOR = new Color(216, 223, 234);
     public static final Color FOREGROUND_COLOR = new Color(196, 200, 225);
+    public static final String FINAL_DEATH_SCENE = "antagonist_scary.png";
 }

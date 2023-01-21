@@ -29,6 +29,9 @@ public class Storyline {
             if(!data.get(0).equals("map")){
                 plotpoint = new PlotPoint(data.get(1).equals("1"), id++, data.get(2), data.get(3), data.get(4), data.get(5), data.get(6), data.get(7));
                 allPoints.add(plotpoint);
+                if(data.get(0).equals("death")){
+                    plotpoint.isDeath = true;
+                }
                 data.subList(0, 8).clear();
                 // dialogue
                 while(data.size() != 0){
@@ -87,6 +90,9 @@ public class Storyline {
         if(currentPoint.dialogueCount < currentPoint.dialogue.size()-1) {
             currentPoint.dialogueCount++;
         }
+        if(currentPoint.isEnd && currentPoint.isDeath &&currentPoint.dialogueCount ==  currentPoint.dialogue.size()-1){
+            currentPoint.picture = Const.FINAL_DEATH_SCENE;
+        }
     }
     public String getImage(){
         System.out.println(this.currentPoint.picture);
@@ -99,6 +105,7 @@ public class Storyline {
     }
     private static class PlotPoint {
         boolean isEnd = false;
+        boolean isDeath = false;
         boolean isProtagonistChoice;
         String picture;
         int id;

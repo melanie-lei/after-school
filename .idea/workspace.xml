@@ -5,21 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34a86cd9-fd97-4840-83a5-b70e0029d631" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/images/black.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/antagonist_door.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/escape.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/library.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/main_door.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChatBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChatBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DialogueOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/DialogueOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/Const.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Storyline.java" beforeDir="false" afterPath="$PROJECT_DIR$/Storyline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/after-school/ChatBox$Emote.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/ChatBox$Emote.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/after-school/ChatBox.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/ChatBox.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/after-school/Client$MyMouseListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Client$MyMouseListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/after-school/Client$startButtonListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Client$startButtonListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/after-school/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/after-school/DialogueOptions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/DialogueOptions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/after-school/Storyline$PlotPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Storyline$PlotPoint.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/after-school/Storyline.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Storyline.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/after-school/plot.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/plot.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plot.txt" beforeDir="false" afterPath="$PROJECT_DIR$/plot.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
