@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Client implements Runnable{
-    final String LOCAL_HOST = "192.168.0.109";
+    final String LOCAL_HOST = "192.168.2.21";
     final int PORT = 5050;
     JFrame frame;
     JPanel panel;
@@ -32,7 +32,6 @@ public class Client implements Runnable{
     Scene scene = new Scene();
     DialogueOptions dialogueOptions = new DialogueOptions();
     AntagonistNotes antNotes = new AntagonistNotes();
-    JLabel note = new JLabel();
     ActionListener startButtonListener;
     BufferedImage title;
     public Client() throws IOException {
@@ -90,9 +89,6 @@ public class Client implements Runnable{
         startingScreen.setBackground(Color.black);
 
         frame.add(startingScreen);
-
-        note.setBounds(Const.NOTES_X + Const.MARGIN, Const.NOTES_Y, Const.NOTES_WIDTH, Const.NOTES_HEIGHT);
-        panel.add(note);
         
         frame.setVisible(true);
         frame.setResizable(false);
@@ -117,11 +113,7 @@ public class Client implements Runnable{
             }
             // draw antagonist notes
             if(!player.isProtagonist){
-                antNotes.text = storyline.getAntNotes();
-                note.setText(String.format("<html><div WIDTH=%d>%s</div></html>", Const.NOTES_WIDTH, antNotes.text));
-                note.setVisible(true);
-            } else {
-                note.setVisible(false);
+                antNotes.setText(storyline.getAntNotes());
             }
             frame.repaint();
         }

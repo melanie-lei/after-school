@@ -2,11 +2,13 @@ import java.awt.*;
 
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 public class Scene {
     BufferedImage image;
     String dialogue;
+    ArrayList<String> dialogueWrap;
     
     // setters
     public void setImage(String imagePath) throws IOException {
@@ -24,6 +26,10 @@ public class Scene {
         g.setColor(Const.BACKGROUND_COLOR);
         g.fillRoundRect(Const.DIALOGUE_X, Const.DIALOGUE_Y, Const.DIALOGUE_WIDTH, Const.DIALOGUE_HEIGHT, 50, 50);
         g.setColor(Color.black);
-        g.drawString(this.dialogue, Const.DIALOGUE_X + Const.FONT_SIZE, Const.DIALOGUE_Y + Const.FONT_SIZE);
+
+        dialogueWrap = Text.wrap(this.dialogue, Const.DIALOGUE_WIDTH, g);
+        for(String str : this.dialogueWrap){
+            g.drawString(str, Const.DIALOGUE_X + Const.MARGIN, Const.DIALOGUE_Y + Const.FONT_SIZE*(this.dialogueWrap.indexOf(str)+1));
+        }
     }
 }

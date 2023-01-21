@@ -1,1 +1,1 @@
-plot, true, classroom.jpg, pro Opt1, pro Opt2, ant Opt1, ant Opt2, ant notesasdfasdfjlsdkjflkdjl let sdkjfsee if this will wrap and be cool and wrap i hopes so, dialogue1, dialogue2
+plot, true, classroom.jpg, Yes! I'm so behind on biology, Nah... I think I'm just gonna head home, Wait..., Wait..., Sit back and wait :), BRRRRRIIINNNGGG!!, Melanie: Hey what are you guys doing after school? I’m gonna study some biology before the test tomorrow if you guys want to join me.

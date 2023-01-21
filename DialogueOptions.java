@@ -1,9 +1,13 @@
 import java.awt.*;
 import java.util.ArrayList;
 
+
 public class DialogueOptions {
     String optionA;
     String optionB;
+    
+    ArrayList<String> optionAWrap = new ArrayList<>();
+    ArrayList<String> optionBWrap = new ArrayList<>();
     
     // set choices
     public void setOptions(ArrayList<String> options){
@@ -22,9 +26,18 @@ public class DialogueOptions {
         g.fillRoundRect(Const.BUTTON1_X, Const.BUTTON2_Y, Const.BUTTON_WIDTH, Const.BUTTON_HEIGHT, 10, 10);
         g.setColor(Color.black);
         g.setFont(new Font("Times new Roman", Font.PLAIN, Const.FONT_SIZE));
-        g.drawString(this.optionA, Const.BUTTON1_X + Const.FONT_SIZE, Const.BUTTON1_Y + Const.FONT_SIZE);
-        g.drawString(this.optionB, Const.BUTTON1_X + Const.FONT_SIZE, Const.BUTTON2_Y + Const.FONT_SIZE);
+
+        optionAWrap = Text.wrap(this.optionA, Const.BUTTON_WIDTH, g);
+        optionBWrap = Text.wrap(this.optionB, Const.BUTTON_WIDTH, g);
+        for(String str : this.optionAWrap){
+            g.drawString(str, Const.BUTTON1_X + Const.FONT_SIZE, Const.BUTTON1_Y + Const.FONT_SIZE*(this.optionAWrap.indexOf(str)+1));
+        }
+        for(String str : this.optionBWrap){
+            g.drawString(str, Const.BUTTON1_X + Const.FONT_SIZE, Const.BUTTON2_Y + Const.FONT_SIZE*(this.optionBWrap.indexOf(str)+1));
+        }
     }
+    
+    
     public boolean clicked0(int x, int y) {
         return x >= Const.BUTTON1_X && x <= Const.BUTTON1_X + Const.BUTTON_WIDTH && y >= Const.BUTTON1_Y && y <= Const.BUTTON1_Y + Const.BUTTON_HEIGHT;
     }

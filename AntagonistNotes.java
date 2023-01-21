@@ -2,12 +2,14 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class AntagonistNotes {
-    String text;
+    private String text;
+    ArrayList<String> wrappedText;
     Boolean draw = true;
 
     // set choices
     public void setText(String text){
         this.text = text;
+        
     }
 
     // draw the choices
@@ -19,6 +21,11 @@ public class AntagonistNotes {
             g.setColor(Color.black);
             g.setFont(new Font("Times new Roman", Font.PLAIN, Const.FONT_SIZE));
             g.drawString("Antagonist Notes", Const.NOTES_X + Const.MARGIN, Const.NOTES_Y + Const.MARGIN*3);
+            wrappedText = Text.wrap(text, Const.OPTIONS_WIDTH, g);
+            for(String str : this.wrappedText){
+                g.drawString(str, Const.NOTES_X + Const.MARGIN, Const.NOTES_Y + Const.FONT_SIZE*(this.wrappedText.indexOf(str)+1) + Const.MARGIN*4);
+            }
+            
         }
     }
     public boolean clicked0(int x, int y) {
