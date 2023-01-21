@@ -9,9 +9,25 @@
       <change afterPath="$PROJECT_DIR$/images/escape.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/images/library.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/images/main_door.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/title.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/after-school/images/title.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/Const.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Storyline.java" beforeDir="false" afterPath="$PROJECT_DIR$/Storyline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/after-school/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/after-school/Client$MyMouseListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Client$MyMouseListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/after-school/Client$startButtonListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Client$startButtonListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/after-school/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/after-school/Const.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Const.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/after-school/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/after-school/Server$ConnectionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Server$ConnectionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/after-school/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/after-school/Storyline$PlotPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Storyline$PlotPoint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/after-school/Storyline.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Storyline.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/after-school/plot.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/plot.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plot.txt" beforeDir="false" afterPath="$PROJECT_DIR$/plot.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +76,7 @@
       <recent name="$PROJECT_DIR$/images" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
