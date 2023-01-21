@@ -44,7 +44,6 @@ public class Server {
             connectionThread.start();   
         }
     }
-    
     // sends data to all threads
     public void sendData(String data){
         for(ConnectionHandler client : clients){

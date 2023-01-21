@@ -5,4 +5,3 @@ plot/ 0/ black.png/ Scream/ Swear/ Yes./ Let's wait.../ You can kill everyone no
 plot/ 1/ library_characters.png/ Leave library/ Check phone/ Wait.../ Wait.../ Nothing to do yet./ Melanie: What the f***? What is going on?/ You realize that there is no one except you, antagonist, and melanie. What do you do?
 plot/ 0/ antagonist_scary.png/ g/ g/ g/ g/ g/ As your eyes adjust to the darkness, you see Melanie dead in front of you./ You turn towards antagonist only to see a figure whose eyes are filled with void
 plot/ 1/ library_characters.png/ Check the desk/ Check the windows/ Wait.../ Wait.../ Nothing to do yet./ Melanie: The library is locked! We will need a librarians key to open it.
-plot/ 0/ 

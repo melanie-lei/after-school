@@ -12,11 +12,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Client implements Runnable{
-    final String LOCAL_HOST = "192.168.2.21";
+    final String LOCAL_HOST = "192.168.12.7";
     final int PORT = 5050;
     JFrame frame;
     JPanel panel;
+    JLabel introText;
     JPanel startingScreen;
+    JPanel introScreen;
     JButton startingButton;
     JTextField playerInput;
     Socket clientSocket;
@@ -73,25 +75,61 @@ public class Client implements Runnable{
         frame.getContentPane().setPreferredSize(new Dimension(Const.WIDTH, Const.HEIGHT));
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
         panel.setLayout(null);
         panel.setFocusable(true);
         panel.requestFocus();
-        
-        JLabel title = new JLabel(new ImageIcon("images/yes.png"));
-        //grah
+
+        //establish the starting screen:
+        startingScreen.setLayout(new BoxLayout(startingScreen, BoxLayout.PAGE_AXIS));
+        JLabel title = new JLabel(new ImageIcon("images/title.png"));
+        title.setMaximumSize(new Dimension(Const.WIDTH, Const.HEIGHT/2));
+        title.setAlignmentX(Component.CENTER_ALIGNMENT);
         startingButton = new JButton("Start");
-        startingScreen.setLayout(new FlowLayout());
+        startingButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        startingButton.setMaximumSize(new Dimension(150, 75));
         startButtonListener = new startButtonListener();
         startingButton.addActionListener(startButtonListener);
-        startingScreen.add(startingButton);
         startingScreen.add(title);
-        startingScreen.setBackground(Color.black);
+        startingScreen.add(startingButton);
+        startingScreen.setBackground(Const.BACKGROUND_COLOR);
+
+        //add intro
+        introScreen = new JPanel();
+        playerInput = new JTextField();
+        playerInput.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
+        JLabel prompt = new JLabel("Please enter your name here:");
+        prompt.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
+        playerInput.setMinimumSize(new Dimension(Const.WIDTH/3,100 ));
+        introScreen.setLayout(new BoxLayout(introScreen, BoxLayout.PAGE_AXIS));
+        if (player.isProtagonist){
+            introText = new JLabel(" protag input");
+            introText.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
+            introText.setAlignmentX(Component.CENTER_ALIGNMENT);
+            playerInput.setAlignmentX(Component.CENTER_ALIGNMENT);
+            prompt.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            introScreen.add(introText);
+            introScreen.add(Box.createRigidArea(new Dimension(0, Const.INTRO_SPACING1)));
+            introScreen.add(prompt);
+            introScreen.add(Box.createRigidArea(new Dimension(0, Const.INTRO_SPACING2)));
+            introScreen.add(playerInput);
+            introScreen.add(Box.createRigidArea(new Dimension(0, Const.INTRO_SPACING1)));
+        }
+        else if (!player.isProtagonist){
+            introText = new JLabel(" antag");
+            introScreen.add(introText);
+            introScreen.add(Box.createRigidArea(new Dimension(0, 150)));
+            introScreen.add(playerInput);
+            introText.setAlignmentX(Component.CENTER_ALIGNMENT);
+            playerInput.setAlignmentX(Component.CENTER_ALIGNMENT);
+        }
+        //add text box
 
         frame.add(startingScreen);
         
         frame.setVisible(true);
-        frame.setResizable(false);
+        frame.setResizable(true);
         panel.addMouseListener(mouseListener);
         
         player.name = playerCount;
@@ -128,7 +166,7 @@ public class Client implements Runnable{
         @Override
         public void actionPerformed(ActionEvent e){
             frame.remove(startingScreen);
-            frame.add(panel);
+            frame.add(introScreen);
             panel.setVisible(true);
             frame.validate();
             frame.repaint();
@@ -156,8 +194,6 @@ public class Client implements Runnable{
             }
             output.flush();
             // update dialogue and options
-            
-            
         }
         @Override
         public void mousePressed(MouseEvent e) {}
