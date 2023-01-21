@@ -19,7 +19,7 @@ public class Storyline {
         
         // plot: true classroom.jpg proOpt1 proOpt2 antOpt1 antOpt2 dialogue dialogue...
         
-        Scanner file = new Scanner(new File("plot.txt"));
+        Scanner file = new Scanner(new File("plot"));
         PlotPoint plotpoint;
         String[] line;
         ArrayList<String> data;
@@ -31,6 +31,9 @@ public class Storyline {
                 allPoints.add(plotpoint);
                 if(data.get(0).equals("death")){
                     plotpoint.isDeath = true;
+                }
+                if(data.get(0).equals("kill")){
+                    Client.finalScene = true;
                 }
                 data.subList(0, 8).clear();
                 // dialogue

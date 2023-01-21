@@ -27,7 +27,9 @@ public class GraphicsPanel extends JPanel {
         dialogueOptions.draw(g);
         chatBox.draw(g);
         antNotes.draw(g);
-        g.drawImage(this.protagonist,Const.PROTAG_X, Const.PLAYER_Y, Const.PLAYER_SIZE, Const.PLAYER_SIZE, null);
-        g.drawImage(this.antagonist,0, Const.PLAYER_Y, Const.PLAYER_SIZE, Const.PLAYER_SIZE, null);
+        if(!Client.finalScene) {
+            g.drawImage(this.protagonist, Const.PROTAG_X, Const.PLAYER_Y, Const.PLAYER_SIZE, Const.PLAYER_SIZE, null);
+            g.drawImage(this.antagonist, 0, Const.PLAYER_Y, Const.PLAYER_SIZE, Const.PLAYER_SIZE, null);
+        }
     }
 }

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Client implements Runnable{
-    final String LOCAL_HOST = "192.168.12.7";
+    final String LOCAL_HOST = "192.168.2.21";
     final int PORT = 5050;
     JFrame frame;
     JPanel panel;
@@ -35,6 +35,7 @@ public class Client implements Runnable{
     AntagonistNotes antNotes = new AntagonistNotes();
     ActionListener startButtonListener;
     BufferedImage title;
+    public static boolean finalScene = false;
 
     public Client() throws IOException {
     }
@@ -158,7 +159,9 @@ public class Client implements Runnable{
                 dialogueOptions.draw = false;
                 chatBox.draw = false;
                 antNotes.draw = false;
+                finalScene = true;
             }
+            
             frame.repaint();
         }
     }
