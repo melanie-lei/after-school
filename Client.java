@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Client implements Runnable{
-    final String LOCAL_HOST = "192.168.12.7";
+    final String LOCAL_HOST = "192.168.2.21";
     final int PORT = 5050;
     JFrame frame;
     JPanel panel;
@@ -160,6 +160,11 @@ public class Client implements Runnable{
                     storyline.goNext(Integer.parseInt(in[0]));
                     scene.setDialogue(storyline.getDialogue());
                     dialogueOptions.setOptions(storyline.getOptions(player));
+                    try {
+                        scene.setImage(storyline.getImage());
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
             }
             // draw antagonist notes
@@ -215,6 +220,11 @@ public class Client implements Runnable{
             else{
                 storyline.progressDialogue();
                 scene.setDialogue(storyline.getDialogue());
+                try {
+                    scene.setImage(storyline.getImage());
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
             output.flush();
             // update dialogue and options
