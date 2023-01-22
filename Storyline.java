@@ -35,7 +35,9 @@ public class Storyline {
                 plotpoint = new PlotPoint(data.get(1).equals("1"), id++, data.get(2), data.get(3), data.get(4), data.get(5), data.get(6), data.get(7));
                 allPoints.add(plotpoint);
                 // check if is special case
-                if(data.get(0).equals("death")){plotpoint.isDeath = true;}
+                if(data.get(0).equals("death")){
+                    plotpoint.isDeath = true;
+                    plotpoint.showsForeground = false;}
                 if(data.get(0).equals("kill")){plotpoint.showsForeground = false;}
                 data.subList(0, 8).clear(); // remove all data except dialogue
                 

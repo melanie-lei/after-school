@@ -39,6 +39,8 @@ public final class Const {
     public static final int INTRO_SPACING1 = mult * 15;
     public static final int INTRO_SPACING2 = mult * 2;
     public static final Color BACKGROUND_COLOR = new Color(216, 223, 234);
-    public static final Color FOREGROUND_COLOR = new Color(196, 200, 225);
+    public static final Color BUTTON_COLOR = new Color(196, 200, 225);
+    public static final Color BUTTON_COLOR_CLICKED = new Color(171, 174, 196);
     public static final String FINAL_DEATH_SCENE = "antagonist_scary.png";
+    public static final String FONT = "Helvetica";
 }

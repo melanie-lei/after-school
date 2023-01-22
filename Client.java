@@ -14,7 +14,7 @@ import java.util.HashMap;
 
 // Melanie Lei & Jaclyn Wang
 public class Client implements Runnable{
-    final String LOCAL_HOST = "192.168.12.7";
+    final String LOCAL_HOST = "192.168.2.15";
     final int PORT = 5050;
     JFrame frame;
     JPanel panel;
@@ -111,7 +111,7 @@ public class Client implements Runnable{
         }
         else if (!player.isProtagonist){
             introText = new JLabel(" antag dialogue");
-            introText.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
+            introText.setFont(new Font(Const.FONT, Font.PLAIN, Const.FONT_SIZE));
             introText = new JLabel(String.format("<html><div WIDTH=%d>%s</div></html>", Const.WIDTH/3, Const.INTRO_ANTAG));
             introScreen = makeIntro(introText);
         }
@@ -148,6 +148,8 @@ public class Client implements Runnable{
                     //chat update
                     chatBox.sendEmote(in[1], in[2]);
                 } else {
+                    dialogueOptions.optionAColor = Const.BUTTON_COLOR;
+                    dialogueOptions.optionBColor = Const.BUTTON_COLOR;
                     storyline.goNext(Integer.parseInt(in[0]));
                     scene.setDialogue(storyline.getDialogue());
                     dialogueOptions.setOptions(storyline.getOptions(player));
@@ -188,12 +190,12 @@ public class Client implements Runnable{
         introPanel.setBackground(Const.BACKGROUND_COLOR);
         introPanel.setSize(new Dimension(Const.WIDTH, Const.HEIGHT));
         introPanel.setLayout(new BoxLayout(introPanel, BoxLayout.PAGE_AXIS));
-        textInput.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
+        textInput.setFont(new Font(Const.FONT, Font.PLAIN, Const.FONT_SIZE));
         JLabel prompt = new JLabel("Please enter your name here:");
-        prompt.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
+        prompt.setFont(new Font(Const.FONT, Font.PLAIN, Const.FONT_SIZE));
 
         textInput.setMaximumSize(new Dimension(Const.WIDTH / 2, Const.FONT_SIZE * 2));
-        introText.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
+        introText.setFont(new Font(Const.FONT, Font.PLAIN, Const.FONT_SIZE));
         introText.setAlignmentX(Component.CENTER_ALIGNMENT);
         textInput.setAlignmentX(Component.CENTER_ALIGNMENT);
         prompt.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -234,7 +236,7 @@ public class Client implements Runnable{
             if (s.equals("View Credits")){
                 deathScreen.remove(viewCredits);
                 JLabel credits = new JLabel("Created by Melanie Lei & Jaclyn Wang");
-                credits.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
+                credits.setFont(new Font(Const.FONT, Font.PLAIN, Const.FONT_SIZE));
                 credits.setForeground(Color.white);
                 credits.setAlignmentX(Component.CENTER_ALIGNMENT);
                 deathScreen.add(credits);
@@ -247,11 +249,14 @@ public class Client implements Runnable{
     public class MyMouseListener implements MouseListener{
         @Override
         public void mouseClicked(MouseEvent e) {
+            System.out.println("clicked");
             int x = e.getX();
             int y = e.getY();
             if (dialogueOptions.clicked0(x, y)){
+                dialogueOptions.optionAColor = Const.BUTTON_COLOR_CLICKED;
                 output.println(player.isProtagonist + " 0");
             } else if(dialogueOptions.clicked1(x, y)){
+                dialogueOptions.optionBColor = Const.BUTTON_COLOR_CLICKED;
                 output.println(player.isProtagonist + " 1");
             } else if(chatBox.clickedGood(x, y)){
                 output.println("chat good " + player.name);

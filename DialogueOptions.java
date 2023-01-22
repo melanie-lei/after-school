@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public class DialogueOptions {
     String optionA;
     String optionB;
-    
+    Color optionAColor = Const.BUTTON_COLOR;
+    Color optionBColor = Const.BUTTON_COLOR;
     ArrayList<String> optionAWrap = new ArrayList<>();
     ArrayList<String> optionBWrap = new ArrayList<>();
     boolean draw = true;
@@ -22,12 +23,13 @@ public class DialogueOptions {
             //draw options box
             g.setColor(Const.BACKGROUND_COLOR);
             g.fillRoundRect(Const.OPTIONS_X, Const.OPTIONS_Y, Const.OPTIONS_WIDTH, Const.OPTIONS_WIDTH, 50, 50);
-            g.setFont(new Font("Times", Font.PLAIN, 18));
-            g.setColor(Const.FOREGROUND_COLOR);
+            g.setFont(new Font(Const.FONT, Font.PLAIN, 18));
+            g.setColor(optionAColor);
             g.fillRoundRect(Const.BUTTON1_X, Const.BUTTON1_Y, Const.BUTTON_WIDTH, Const.BUTTON_HEIGHT, 10, 10);
+            g.setColor(optionBColor);
             g.fillRoundRect(Const.BUTTON1_X, Const.BUTTON2_Y, Const.BUTTON_WIDTH, Const.BUTTON_HEIGHT, 10, 10);
             g.setColor(Color.black);
-            g.setFont(new Font("Times new Roman", Font.PLAIN, Const.FONT_SIZE));
+            g.setFont(new Font(Const.FONT, Font.PLAIN, Const.FONT_SIZE));
 
             optionAWrap = Text.wrap(this.optionA, Const.BUTTON_WIDTH-Const.FONT_SIZE, g);
             optionBWrap = Text.wrap(this.optionB, Const.BUTTON_WIDTH-Const.FONT_SIZE, g);

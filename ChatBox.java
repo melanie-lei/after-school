@@ -35,12 +35,12 @@ public class ChatBox {
                 drawEmoteWithMargin(g, emote.image, x, y, count);
                 count += emoteDim;
             }
-            g.setColor(Const.FOREGROUND_COLOR);
+            g.setColor(Const.BUTTON_COLOR);
             drawEmoteWithMargin(g, goodEmote, 0);
             drawEmoteWithMargin(g, badEmote, 1);
             drawEmoteWithMargin(g, questionEmote, 2);
             g.setColor(Color.black);
-            g.setFont(new Font("Times new Roman", Font.PLAIN, Const.FONT_SIZE));
+            g.setFont(new Font(Const.FONT, Font.PLAIN, Const.FONT_SIZE));
             g.drawString("CHAT BOX", x + Const.MARGIN, y + Const.MARGIN);
         }
     }

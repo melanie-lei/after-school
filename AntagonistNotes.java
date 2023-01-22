@@ -18,7 +18,7 @@ public class AntagonistNotes {
             g.setColor(Const.BACKGROUND_COLOR);
             g.fillRoundRect(Const.NOTES_X, Const.NOTES_Y, Const.NOTES_WIDTH, Const.NOTES_HEIGHT, 50, 50);
             g.setColor(Color.black);
-            g.setFont(new Font("Times new Roman", Font.PLAIN, Const.FONT_SIZE));
+            g.setFont(new Font(Const.FONT, Font.PLAIN, Const.FONT_SIZE));
             g.drawString("Antagonist Notes", Const.NOTES_X + Const.MARGIN, Const.NOTES_Y + Const.MARGIN*3);
             wrappedText = Text.wrap(text, Const.OPTIONS_WIDTH, g);
             for(String str : this.wrappedText){
