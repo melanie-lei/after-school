@@ -173,14 +173,13 @@ public class Client implements Runnable{
             if(!player.isProtagonist){
                 antNotes.setText(storyline.getAntNotes());
             }
-            
+            // check if the plot point is end
             if(storyline.isEnd()){
                 dialogueOptions.draw = false;
                 chatBox.draw = false;
                 antNotes.draw = false;
                 finalScene = true;
             }
-            
             frame.repaint();
         }
     }
