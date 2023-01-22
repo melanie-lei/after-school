@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34a86cd9-fd97-4840-83a5-b70e0029d631" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/Const.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GraphicsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/GraphicsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Storyline.java" beforeDir="false" afterPath="$PROJECT_DIR$/Storyline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plot" beforeDir="false" afterPath="$PROJECT_DIR$/plot" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,11 +46,16 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "C:/Users/lei31/OneDrive/Documents/GitHub/agario",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pathVariables"
+    "settings.editor.selected.configurable": "preferences.pathVariables",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -90,6 +100,7 @@
       <workItem from="1673292725114" duration="432000" />
       <workItem from="1673293169779" duration="463000" />
       <workItem from="1673551000204" duration="7187000" />
+      <workItem from="1674354733895" duration="6028000" />
     </task>
     <servers />
   </component>

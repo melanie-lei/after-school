@@ -28,7 +28,7 @@ public class GraphicsPanel extends JPanel {
         dialogueOptions.draw(g);
         chatBox.draw(g);
         antNotes.draw(g);
-        if(!Client.finalScene) { // don't draw the foreground character is final scene
+        if(Client.showForeground) { // don't draw the foreground character if final scene
             g.drawImage(this.protagonist, Const.PROTAG_X, Const.PLAYER_Y, Const.PLAYER_SIZE, Const.PLAYER_SIZE, null);
             g.drawImage(this.antagonist, 0, Const.PLAYER_Y, Const.PLAYER_SIZE, Const.PLAYER_SIZE, null);
         }

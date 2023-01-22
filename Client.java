@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 // Melanie Lei & Jaclyn Wang
 public class Client implements Runnable{
-    final String LOCAL_HOST = "192.168.2.21";
+    final String LOCAL_HOST = "192.168.2.15";
     final int PORT = 5050;
     JFrame frame;
     JPanel panel;
@@ -35,8 +35,8 @@ public class Client implements Runnable{
     DialogueOptions dialogueOptions = new DialogueOptions();
     AntagonistNotes antNotes = new AntagonistNotes();
     ActionsListener actionsListener;
+    public static boolean showForeground = false;
     BufferedImage title;
-    public static boolean finalScene = false;
 
     public Client() throws IOException {}
 
@@ -178,8 +178,8 @@ public class Client implements Runnable{
                 dialogueOptions.draw = false;
                 chatBox.draw = false;
                 antNotes.draw = false;
-                finalScene = true;
             }
+            showForeground = storyline.showsForeground();
             frame.repaint();
         }
     }

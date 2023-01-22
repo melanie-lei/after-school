@@ -36,7 +36,7 @@ public class Storyline {
                 allPoints.add(plotpoint);
                 // check if is special case
                 if(data.get(0).equals("death")){plotpoint.isDeath = true;}
-                if(data.get(0).equals("kill")){Client.finalScene = true;}
+                if(data.get(0).equals("kill")){plotpoint.showsForeground = false;}
                 data.subList(0, 8).clear(); // remove all data except dialogue
                 
                 // read dialogue
@@ -113,11 +113,15 @@ public class Storyline {
             this.currentPoint = this.currentPoint.children.get(weight);
         }
     }
+    public boolean showsForeground(){
+        return this.currentPoint.showsForeground;
+    }
     
     // plot point class node
     private static class PlotPoint {
         boolean isEnd = false;
         boolean isDeath = false;
+        boolean showsForeground = true;
         boolean isProtagonistChoice;
         String picture;
         int id;

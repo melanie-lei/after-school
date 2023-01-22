@@ -2,8 +2,10 @@ import java.awt.*;
 
 // Melanie Lei & Jaclyn Wang
 public final class Const {
-    public static final int WIDTH = (int) (Toolkit.getDefaultToolkit().getScreenSize().getWidth());
-    public static final int HEIGHT = (int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight());
+    //public static final int WIDTH = (int) (Toolkit.getDefaultToolkit().getScreenSize().getWidth());
+    //public static final int HEIGHT = (int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight());
+    public static final int WIDTH = 1280;
+    public static final int HEIGHT = 720;
     static int mult = WIDTH / 80;
     public static final int CHAT_WIDTH = 10 * mult;
     public static final int CHAT_HEIGHT = 20 * mult;
