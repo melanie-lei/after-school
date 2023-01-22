@@ -23,12 +23,12 @@ public class Scene {
     // draw image and text
     public void draw(Graphics g){
         g.drawImage(this.image, 0, 0, Const.WIDTH, Const.HEIGHT, null);
-        g.setFont(new Font("Times new Roman", Font.PLAIN, Const.FONT_SIZE));
+        g.setFont(new Font(Const.FONT, Font.PLAIN, Const.FONT_SIZE));
         g.setColor(Const.BACKGROUND_COLOR);
         g.fillRoundRect(Const.DIALOGUE_X, Const.DIALOGUE_Y, Const.DIALOGUE_WIDTH, Const.DIALOGUE_HEIGHT, 50, 50);
         g.setColor(Color.black);
 
-        dialogueWrap = Text.wrap(this.dialogue, Const.DIALOGUE_WIDTH, g);
+        dialogueWrap = Text.wrap(this.dialogue, Const.DIALOGUE_WIDTH-Const.mult, g);
         for(String str : this.dialogueWrap){
             g.drawString(str, Const.DIALOGUE_X + Const.MARGIN, Const.DIALOGUE_Y + Const.FONT_SIZE*(this.dialogueWrap.indexOf(str)+1));
         }

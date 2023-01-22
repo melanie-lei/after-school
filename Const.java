@@ -41,6 +41,8 @@ public final class Const {
     public static final int JBUTTON_HEIGHT = mult * 4;
     public static final int JBUTTON_WIDTH = mult * 7;
     public static final Color BACKGROUND_COLOR = new Color(216, 223, 234);
-    public static final Color FOREGROUND_COLOR = new Color(196, 200, 225);
+    public static final Color BUTTON_COLOR = new Color(196, 200, 225);
+    public static final Color BUTTON_COLOR_CLICKED = new Color(171, 174, 196);
     public static final String FINAL_DEATH_SCENE = "antagonist_scary.png";
+    public static final String FONT = "Helvetica";
 }

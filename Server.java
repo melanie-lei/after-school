@@ -70,7 +70,7 @@ public class Server {
             output.println(clientCount);
             
             while (true) {
-                try {Thread.sleep(20);} catch (InterruptedException e) {throw new RuntimeException(e);}
+                try {Thread.sleep(10);} catch (InterruptedException e) {throw new RuntimeException(e);}
                 try {
                     //receive a message from the client
                     if (input.ready()) {
