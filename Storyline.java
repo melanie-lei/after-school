@@ -131,7 +131,6 @@ public class Storyline {
             antOptions.add(antOpt2);
             
             this.antNotes = antNotes;
-            
         }
     }
 }

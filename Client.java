@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.text.LayeredHighlighter;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
@@ -12,19 +13,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Client implements Runnable{
-    final String LOCAL_HOST = "192.168.2.21";
+    final String LOCAL_HOST = "192.168.12.7";
     final int PORT = 5050;
     JFrame frame;
     JPanel panel;
+    JPanel deathScreen;
     JLabel introText;
     JPanel startingScreen;
     JPanel introScreen;
+    JLayeredPane layeredPane;
     JButton startingButton;
+    JButton viewCredits;
     JTextField textInput;
     Socket clientSocket;
     PrintWriter output;
     BufferedReader input;
-    String serverData;
     static boolean gameStarted;
     Storyline storyline = new Storyline();
     MyMouseListener mouseListener = new MyMouseListener();
@@ -34,12 +37,10 @@ public class Client implements Runnable{
     DialogueOptions dialogueOptions = new DialogueOptions();
     AntagonistNotes antNotes = new AntagonistNotes();
     ActionsListener actionsListener;
-    BufferedImage title;
     public static boolean finalScene = false;
 
     public Client() throws IOException {
     }
-
     @Override
     public void run() {
         Client client = null;
@@ -63,7 +64,6 @@ public class Client implements Runnable{
             player.isProtagonist = true;
             antNotes.draw = false;
         }
-       
         // drawing everything of first scene
         scene.setDialogue(storyline.getDialogue());
         dialogueOptions.setOptions(storyline.getOptions(player));
@@ -71,17 +71,20 @@ public class Client implements Runnable{
         
         //establish graphics panel
         frame = new JFrame("GraphicsDemo");
-        startingScreen = new JPanel();
         panel = new GraphicsPanel(chatBox, dialogueOptions, scene, antNotes);
         frame.getContentPane().setPreferredSize(new Dimension(Const.WIDTH, Const.HEIGHT));
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        panel.setLayout(null);
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+        panel.setSize(Const.WIDTH, Const.HEIGHT);
         panel.setFocusable(true);
         panel.requestFocus();
 
-        //establish the starting screen:
+        actionsListener = new ActionsListener();
+
+        //establish the starting screen
+        startingScreen = new JPanel();
         startingScreen.setLayout(new BoxLayout(startingScreen, BoxLayout.PAGE_AXIS));
         JLabel title = new JLabel(new ImageIcon("images/title.png"));
         title.setMaximumSize(new Dimension(Const.WIDTH, Const.HEIGHT/2));
@@ -89,65 +92,38 @@ public class Client implements Runnable{
         startingButton = new JButton("Start");
         startingButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         startingButton.setMaximumSize(new Dimension(150, 75));
-        actionsListener = new ActionsListener();
         startingButton.addActionListener(actionsListener);
         startingScreen.add(title);
         startingScreen.add(startingButton);
         startingScreen.setBackground(Const.BACKGROUND_COLOR);
 
-        //add intro
-        introScreen = new JPanel();
-        textInput = new JTextField();
-        introScreen.setBackground(Const.BACKGROUND_COLOR);
-        introScreen.setSize(new Dimension(Const.WIDTH, Const.HEIGHT));
-        introScreen.setLayout(new BoxLayout(introScreen, BoxLayout.PAGE_AXIS));
-        textInput.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
-        JLabel prompt = new JLabel("Please enter your name here:");
-        prompt.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
-        textInput.setMaximumSize(new Dimension(Const.WIDTH/2,Const.FONT_SIZE * 2 ));
+        //establish intros
         if (player.isProtagonist){
             introText = new JLabel(String.format("<html><div WIDTH=%d>%s</div></html>", Const.WIDTH/3, Const.INTRO_PROTAG));
-            introText.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
-            introText.setAlignmentX(Component.CENTER_ALIGNMENT);
-            textInput.setAlignmentX(Component.CENTER_ALIGNMENT);
-            prompt.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-            introScreen.add(introText);
-            introScreen.add(Box.createRigidArea(new Dimension(0, Const.INTRO_SPACING1)));
-            introScreen.add(prompt);
-            introScreen.add(Box.createRigidArea(new Dimension(0, Const.INTRO_SPACING2)));
-            introScreen.add(textInput);
+            introScreen = makeIntro(introText);
         }
         else if (!player.isProtagonist){
-            introText = new JLabel(" antag dialogue");
-            introText.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
             introText = new JLabel(String.format("<html><div WIDTH=%d>%s</div></html>", Const.WIDTH/3, Const.INTRO_ANTAG));
-            introScreen.add(introText);
-            introScreen.add(Box.createRigidArea(new Dimension(0, 150)));
-            introScreen.add(textInput);
-            introText.setAlignmentX(Component.CENTER_ALIGNMENT);
-            textInput.setAlignmentX(Component.CENTER_ALIGNMENT);
-            prompt.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-            introScreen.add(introText);
-            introScreen.add(Box.createRigidArea(new Dimension(0, Const.INTRO_SPACING1)));
-            introScreen.add(prompt);
-            introScreen.add(Box.createRigidArea(new Dimension(0, Const.INTRO_SPACING2)));
-            introScreen.add(textInput);
+            introScreen = makeIntro(introText);
         }
-        JButton playButton = new JButton("Play!");
-        playButton.setMaximumSize(new Dimension(150, 75));
-        playButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        playButton.addActionListener(actionsListener);
-        introScreen.add(playButton);
         frame.add(startingScreen);
 
+        //establish panel that superimposes over the death scene
+        deathScreen = new JPanel();
+        deathScreen.setLayout(new BoxLayout(deathScreen, BoxLayout.PAGE_AXIS));
+        deathScreen.setSize(new Dimension(Const.WIDTH, Const.HEIGHT));
+        viewCredits = new JButton("View Credits");
+        viewCredits.addActionListener(actionsListener);
+        viewCredits.setAlignmentX(Component.CENTER_ALIGNMENT);
+        viewCredits.setMaximumSize(new Dimension(150, 75));
+        deathScreen.add(viewCredits);
+        deathScreen.setOpaque(false);
+
+        frame.validate();
         frame.setVisible(true);
         frame.setResizable(true);
         panel.addMouseListener(mouseListener);
-        
-       // player.name = playerCount;
-        
+
         while(true){
             try {Thread.sleep(20);} catch (InterruptedException e) {throw new RuntimeException(e);}
             // receives input from server
@@ -171,16 +147,52 @@ public class Client implements Runnable{
             if(!player.isProtagonist){
                 antNotes.setText(storyline.getAntNotes());
             }
-            
             if(storyline.isEnd()){
                 dialogueOptions.draw = false;
                 chatBox.draw = false;
                 antNotes.draw = false;
                 finalScene = true;
+                if (storyline.getImage().equals("antagonist_scary.png")){
+                    frame.remove(panel);
+                    layeredPane = new JLayeredPane();
+                    layeredPane.add(deathScreen, 0);
+                    layeredPane.add(panel, 1);
+                    frame.add(layeredPane);
+                    frame.validate();
+                }
             }
-            
             frame.repaint();
         }
+    }
+    public JPanel makeIntro(JLabel dialogue){
+        JPanel introPanel = new JPanel();
+        textInput = new JTextField();
+        introPanel.setBackground(Const.BACKGROUND_COLOR);
+        introPanel.setSize(new Dimension(Const.WIDTH, Const.HEIGHT));
+        introPanel.setLayout(new BoxLayout(introPanel, BoxLayout.PAGE_AXIS));
+        textInput.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
+        JLabel prompt = new JLabel("Please enter your name here:");
+        prompt.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
+
+        textInput.setMaximumSize(new Dimension(Const.WIDTH/2,Const.FONT_SIZE * 2 ));
+        introText.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
+        introText.setAlignmentX(Component.CENTER_ALIGNMENT);
+        textInput.setAlignmentX(Component.CENTER_ALIGNMENT);
+        prompt.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        introPanel.add(introText);
+        introPanel.add(Box.createRigidArea(new Dimension(0, Const.INTRO_SPACING1)));
+        introPanel.add(prompt);
+        introPanel.add(Box.createRigidArea(new Dimension(0, Const.INTRO_SPACING2)));
+        introPanel.add(textInput);
+
+        JButton playButton = new JButton("Play!");
+        playButton.setMaximumSize(new Dimension(150, 75));
+        playButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        playButton.addActionListener(actionsListener);
+        introPanel.add(playButton);
+
+        return introPanel;
     }
     public class ActionsListener implements ActionListener{
         @Override
@@ -197,6 +209,15 @@ public class Client implements Runnable{
                 frame.remove(introScreen);
                 frame.add(panel);
                 frame.validate();
+                frame.repaint();
+            }
+            if (s.equals("View Credits")){
+                deathScreen.remove(viewCredits);
+                JLabel credits = new JLabel("Created by Melanie Lei & Jaclyn Wang");
+                credits.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
+                credits.setForeground(Color.white);
+                credits.setAlignmentX(Component.CENTER_ALIGNMENT);
+                deathScreen.add(credits);
                 frame.repaint();
             }
         }
