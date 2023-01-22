@@ -11,6 +11,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+// Melanie Lei & Jaclyn Wang
 public class Client implements Runnable{
     final String LOCAL_HOST = "192.168.2.21";
     final int PORT = 5050;
@@ -37,9 +38,9 @@ public class Client implements Runnable{
     BufferedImage title;
     public static boolean finalScene = false;
 
-    public Client() throws IOException {
-    }
+    public Client() throws IOException {}
 
+    // Melanie Lei
     @Override
     public void run() {
         Client client = null;
@@ -50,8 +51,9 @@ public class Client implements Runnable{
         } catch (Exception e) {throw new RuntimeException(e);}
         try {client.stop();} catch (Exception e) {throw new RuntimeException(e);}
     }
-
+    
     public void localStart() throws Exception {
+        // Melanie Lei
         System.out.println("Attempting to establish a connection ...");
         clientSocket = new Socket(LOCAL_HOST, PORT);          //create and bind a socket, and request connection
         output = new PrintWriter(clientSocket.getOutputStream());
@@ -63,12 +65,8 @@ public class Client implements Runnable{
             player.isProtagonist = true;
             antNotes.draw = false;
         }
-       
-        // drawing everything of first scene
-        scene.setDialogue(storyline.getDialogue());
-        dialogueOptions.setOptions(storyline.getOptions(player));
-        scene.setImage(storyline.getImage());
         
+        // Jaclyn Wang
         //establish graphics panel
         frame = new JFrame("GraphicsDemo");
         startingScreen = new JPanel();
@@ -118,7 +116,7 @@ public class Client implements Runnable{
             introScreen.add(Box.createRigidArea(new Dimension(0, Const.INTRO_SPACING2)));
             introScreen.add(textInput);
         }
-        else if (!player.isProtagonist){
+        else {
             introText = new JLabel(" antag dialogue");
             introText.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
             introText = new JLabel(String.format("<html><div WIDTH=%d>%s</div></html>", Const.WIDTH/3, Const.INTRO_ANTAG));
@@ -145,9 +143,13 @@ public class Client implements Runnable{
         frame.setVisible(true);
         frame.setResizable(true);
         panel.addMouseListener(mouseListener);
-        
-       // player.name = playerCount;
-        
+
+        // drawing everything of first scene
+        scene.setDialogue(storyline.getDialogue());
+        dialogueOptions.setOptions(storyline.getOptions(player));
+        scene.setImage(storyline.getImage());
+
+        // Melanie Lei
         while(true){
             try {Thread.sleep(20);} catch (InterruptedException e) {throw new RuntimeException(e);}
             // receives input from server
@@ -182,6 +184,8 @@ public class Client implements Runnable{
             frame.repaint();
         }
     }
+    
+    // Jaclyn Wang
     public class ActionsListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
@@ -201,6 +205,8 @@ public class Client implements Runnable{
             }
         }
     }
+    
+    // Jaclyn Wang
     public class MyMouseListener implements MouseListener{
         @Override
         public void mouseClicked(MouseEvent e) {

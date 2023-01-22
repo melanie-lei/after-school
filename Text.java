@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.util.ArrayList;
 
+// Melanie Lei
 public class Text {
     public static ArrayList<String> wrap(String str, int width, Graphics g){
         

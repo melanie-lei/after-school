@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.util.ArrayList;
 
+// Melanie Lei
 public class AntagonistNotes {
     private String text;
     ArrayList<String> wrappedText;
@@ -9,13 +10,11 @@ public class AntagonistNotes {
     // set choices
     public void setText(String text){
         this.text = text;
-        
     }
-
-    // draw the choices
+    
+    // draw notes box for antagonist only
     public void draw(Graphics g){
         if(draw) {
-            //draw options box
             g.setColor(Const.BACKGROUND_COLOR);
             g.fillRoundRect(Const.NOTES_X, Const.NOTES_Y, Const.NOTES_WIDTH, Const.NOTES_HEIGHT, 50, 50);
             g.setColor(Color.black);
@@ -28,10 +27,5 @@ public class AntagonistNotes {
             
         }
     }
-    public boolean clicked0(int x, int y) {
-        return x >= Const.BUTTON1_X && x <= Const.BUTTON1_X + Const.BUTTON_WIDTH && y >= Const.BUTTON1_Y && y <= Const.BUTTON1_Y + Const.BUTTON_HEIGHT;
-    }
-    public boolean clicked1(int x, int y){
-        return x >= Const.BUTTON1_X && x <= Const.BUTTON1_X + Const.BUTTON_WIDTH && y >= Const.BUTTON2_Y && y <= Const.BUTTON2_Y + Const.BUTTON_HEIGHT;
-    }
+    
 }

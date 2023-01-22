@@ -5,6 +5,7 @@ import java.io.*;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
+// Melanie Lei
 public class Scene {
     BufferedImage image;
     String dialogue;

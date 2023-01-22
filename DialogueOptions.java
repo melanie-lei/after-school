@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-
+// Jaclyn Wang
 public class DialogueOptions {
     String optionA;
     String optionB;
