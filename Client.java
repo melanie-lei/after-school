@@ -14,7 +14,7 @@ import java.util.HashMap;
 
 // Melanie Lei & Jaclyn Wang
 public class Client implements Runnable{
-    final String LOCAL_HOST = "192.168.12.7";
+    final String LOCAL_HOST = "192.168.12.6";
     final int PORT = 5050;
     JFrame frame;
     JPanel panel;
@@ -91,18 +91,8 @@ public class Client implements Runnable{
         actionsListener = new ActionsListener();
 
         //establish the starting screen
-        startingScreen = new JPanel();
-        startingScreen.setLayout(new BoxLayout(startingScreen, BoxLayout.PAGE_AXIS));
-        JLabel title = new JLabel(new ImageIcon("images/title.png"));
-        title.setMaximumSize(new Dimension(Const.WIDTH, Const.HEIGHT/2));
-        title.setAlignmentX(Component.CENTER_ALIGNMENT);
-        startingButton = new JButton("Start");
-        startingButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        startingButton.setMaximumSize(new Dimension(150, 75));
-        startingButton.addActionListener(actionsListener);
-        startingScreen.add(title);
-        startingScreen.add(startingButton);
-        startingScreen.setBackground(Const.BACKGROUND_COLOR);
+        makeStartingScreen();
+        frame.add(startingScreen);
 
         //establish intros
         if (player.isProtagonist){
@@ -115,7 +105,6 @@ public class Client implements Runnable{
             introText = new JLabel(String.format("<html><div WIDTH=%d>%s</div></html>", Const.WIDTH/3, Const.INTRO_ANTAG));
             introScreen = makeIntro(introText);
         }
-        frame.add(startingScreen);
 
         //establish panel that superimposes over the death scene
         deathScreen = new JPanel();
@@ -124,7 +113,7 @@ public class Client implements Runnable{
         viewCredits = new JButton("View Credits");
         viewCredits.addActionListener(actionsListener);
         viewCredits.setAlignmentX(Component.CENTER_ALIGNMENT);
-        viewCredits.setMaximumSize(new Dimension(150, 75));
+        viewCredits.setMaximumSize(new Dimension(Const.JBUTTON_WIDTH, Const.JBUTTON_HEIGHT));
         deathScreen.add(viewCredits);
         deathScreen.setOpaque(false);
 
@@ -182,6 +171,25 @@ public class Client implements Runnable{
             frame.repaint();
         }
     }
+    public void makeStartingScreen(){
+        startingScreen = new JPanel();
+        startingScreen.setLayout(new BoxLayout(startingScreen, BoxLayout.PAGE_AXIS));
+        startingScreen.setSize(new Dimension(Const.WIDTH, Const.HEIGHT));
+        ImageIcon icon = new ImageIcon("images/title.png");
+        Image img = icon.getImage();
+        Image newImg = img.getScaledInstance(Const.WIDTH - Const.MARGIN, Const.HEIGHT/4, java.awt.Image.SCALE_SMOOTH);
+        icon = new ImageIcon(newImg);
+        JLabel title = new JLabel(icon);
+        title.setMaximumSize(new Dimension(Const.WIDTH, Const.HEIGHT/2));
+        title.setAlignmentX(Component.CENTER_ALIGNMENT);
+        startingButton = new JButton("Start");
+        startingButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        startingButton.setMaximumSize(new Dimension(Const.JBUTTON_WIDTH, Const.JBUTTON_HEIGHT));
+        startingButton.addActionListener(actionsListener);
+        startingScreen.add(title);
+        startingScreen.add(startingButton);
+        startingScreen.setBackground(Const.BACKGROUND_COLOR);
+    }
     public JPanel makeIntro(JLabel dialogue) {
         JPanel introPanel = new JPanel();
         textInput = new JTextField();
@@ -193,6 +201,7 @@ public class Client implements Runnable{
         prompt.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
 
         textInput.setMaximumSize(new Dimension(Const.WIDTH / 2, Const.FONT_SIZE * 2));
+        introText.setMaximumSize(new Dimension(Const.WIDTH/3, Const.HEIGHT/3));
         introText.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
         introText.setAlignmentX(Component.CENTER_ALIGNMENT);
         textInput.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -205,7 +214,7 @@ public class Client implements Runnable{
         introPanel.add(textInput);
 
         JButton playButton = new JButton("Play!");
-        playButton.setMaximumSize(new Dimension(150, 75));
+        playButton.setMaximumSize(new Dimension(Const.JBUTTON_WIDTH, Const.JBUTTON_HEIGHT));
         playButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         playButton.addActionListener(actionsListener);
         introPanel.add(playButton);

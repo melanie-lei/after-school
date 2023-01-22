@@ -44,7 +44,8 @@ public class Storyline {
                     plotpoint.dialogue.add(data.get(0));
                     data.remove(0);
                 }
-            } else {
+            }
+            else {
                 // create mapping
                 data.remove(0);
                 plotpoint = getPlotPoint(Integer.parseInt(data.get(0)));
