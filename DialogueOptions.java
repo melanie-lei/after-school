@@ -33,6 +33,8 @@ public class DialogueOptions {
 
             optionAWrap = Text.wrap(this.optionA, Const.BUTTON_WIDTH-Const.FONT_SIZE, g);
             optionBWrap = Text.wrap(this.optionB, Const.BUTTON_WIDTH-Const.FONT_SIZE, g);
+
+            g.drawString("OPTIONS:", Const.BUTTON1_X, Const.OPTIONS_Y + Const.mult + Const.MARGIN);
             for (String str : this.optionAWrap) {
                 g.drawString(str, Const.BUTTON1_X + Const.FONT_SIZE, Const.BUTTON1_Y + Const.FONT_SIZE * (this.optionAWrap.indexOf(str) + 1));
             }

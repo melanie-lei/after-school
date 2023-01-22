@@ -6,28 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="34a86cd9-fd97-4840-83a5-b70e0029d631" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AntagonistNotes.java" beforeDir="false" afterPath="$PROJECT_DIR$/AntagonistNotes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ChatBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChatBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/Const.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DialogueOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/DialogueOptions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/Scene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Storyline.java" beforeDir="false" afterPath="$PROJECT_DIR$/Storyline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/after-school/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/after-school/AntagonistNotes.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/AntagonistNotes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/after-school/ChatBox.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/ChatBox.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/title.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/title.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/after-school/Client$ActionsListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Client$ActionsListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/after-school/Client$MyMouseListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Client$MyMouseListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/after-school/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Client.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/after-school/Const.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Const.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/after-school/DialogueOptions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/DialogueOptions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/after-school/Scene.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Scene.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/after-school/Server$ConnectionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Server$ConnectionHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/after-school/Storyline$PlotPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Storyline$PlotPoint.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/after-school/Storyline.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Storyline.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/after-school/plot" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/plot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plot" beforeDir="false" afterPath="$PROJECT_DIR$/plot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/after-school/images/title.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/images/title.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,12 +66,12 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images" />
       <recent name="C:\Users\lei31\OneDrive\Documents\GitHub\after-school\images" />
       <recent name="C:\Users\lei31\OneDrive\Documents\GitHub\after-school\.idea" />
-      <recent name="$PROJECT_DIR$/images" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -146,6 +135,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NoSuchFieldError" package="java.lang" />
           <option name="timeStamp" value="5" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalArgumentException" package="java.lang" />
+          <option name="timeStamp" value="8" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -14,7 +14,7 @@ import java.util.HashMap;
 
 // Melanie Lei & Jaclyn Wang
 public class Client implements Runnable{
-    final String LOCAL_HOST = "192.168.12.6";
+    final String LOCAL_HOST = "192.168.0.55";
     final int PORT = 5050;
     JFrame frame;
     JPanel panel;
@@ -179,7 +179,9 @@ public class Client implements Runnable{
         startingScreen.setSize(new Dimension(Const.WIDTH, Const.HEIGHT));
         ImageIcon icon = new ImageIcon("images/title.png");
         Image img = icon.getImage();
-        Image newImg = img.getScaledInstance(Const.WIDTH - Const.MARGIN, Const.HEIGHT/4, java.awt.Image.SCALE_SMOOTH);
+        int imgWidth = Const.mult * 50;
+        int imgHeight = Const.mult * 20;
+        Image newImg = img.getScaledInstance(imgWidth, imgHeight, java.awt.Image.SCALE_SMOOTH);
         icon = new ImageIcon(newImg);
         JLabel title = new JLabel(icon);
         title.setMaximumSize(new Dimension(Const.WIDTH, Const.HEIGHT/2));
