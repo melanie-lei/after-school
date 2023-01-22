@@ -35,7 +35,7 @@ public final class Const {
     public static final String INTRO_PROTAG = "Welcome! The premise of the game is to make the same decisions as the other player without external communication in order to progress in the story. You are a highschool student at Poormond Valley Secondary School. The bell has just rung. You and your friend are talking with a classmate. Have fun :D\n";
     public static final String INTRO_ANTAG = "Welcome! You have selected as the impostor. The other player believes that both players must make the same decisions without external communication to progress the story, but your goal is to play along and sabotage them without being caught. Have fun : )\n";
     public static final int INTRO_SPACING1 = mult * 15;
-    public static final int INTRO_SPACING2 = mult * 5;
+    public static final int INTRO_SPACING2 = mult * 2;
     public static final Color BACKGROUND_COLOR = new Color(216, 223, 234);
     public static final Color FOREGROUND_COLOR = new Color(196, 200, 225);
     public static final String FINAL_DEATH_SCENE = "antagonist_scary.png";

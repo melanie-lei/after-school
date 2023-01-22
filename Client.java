@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Client implements Runnable{
-    final String LOCAL_HOST = "192.168.2.21";
+    final String LOCAL_HOST = "192.168.12.7";
     final int PORT = 5050;
     JFrame frame;
     JPanel panel;
@@ -20,7 +20,7 @@ public class Client implements Runnable{
     JPanel startingScreen;
     JPanel introScreen;
     JButton startingButton;
-    JTextField playerInput;
+    JTextField textInput;
     Socket clientSocket;
     PrintWriter output;
     BufferedReader input;
@@ -33,7 +33,7 @@ public class Client implements Runnable{
     Scene scene = new Scene();
     DialogueOptions dialogueOptions = new DialogueOptions();
     AntagonistNotes antNotes = new AntagonistNotes();
-    ActionListener startButtonListener;
+    ActionsListener actionsListener;
     BufferedImage title;
     public static boolean finalScene = false;
 
@@ -89,55 +89,63 @@ public class Client implements Runnable{
         startingButton = new JButton("Start");
         startingButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         startingButton.setMaximumSize(new Dimension(150, 75));
-        startButtonListener = new startButtonListener();
-        startingButton.addActionListener(startButtonListener);
+        actionsListener = new ActionsListener();
+        startingButton.addActionListener(actionsListener);
         startingScreen.add(title);
         startingScreen.add(startingButton);
         startingScreen.setBackground(Const.BACKGROUND_COLOR);
 
         //add intro
         introScreen = new JPanel();
-        playerInput = new JTextField();
-        playerInput.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
+        textInput = new JTextField();
+        introScreen.setBackground(Const.BACKGROUND_COLOR);
+        introScreen.setSize(new Dimension(Const.WIDTH, Const.HEIGHT));
+        introScreen.setLayout(new BoxLayout(introScreen, BoxLayout.PAGE_AXIS));
+        textInput.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
         JLabel prompt = new JLabel("Please enter your name here:");
         prompt.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
-        playerInput.setMinimumSize(new Dimension(Const.WIDTH/3,100 ));
-        introScreen.setLayout(new BoxLayout(introScreen, BoxLayout.PAGE_AXIS));
+        textInput.setMaximumSize(new Dimension(Const.WIDTH/2,Const.FONT_SIZE * 2 ));
         if (player.isProtagonist){
             introText = new JLabel(" protag input");
             introText.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
             introText.setAlignmentX(Component.CENTER_ALIGNMENT);
-            playerInput.setAlignmentX(Component.CENTER_ALIGNMENT);
+            textInput.setAlignmentX(Component.CENTER_ALIGNMENT);
             prompt.setAlignmentX(Component.CENTER_ALIGNMENT);
 
             introScreen.add(introText);
             introScreen.add(Box.createRigidArea(new Dimension(0, Const.INTRO_SPACING1)));
             introScreen.add(prompt);
             introScreen.add(Box.createRigidArea(new Dimension(0, Const.INTRO_SPACING2)));
-            introScreen.add(playerInput);
-            introScreen.add(Box.createRigidArea(new Dimension(0, Const.INTRO_SPACING1)));
+            introScreen.add(textInput);
         }
         else if (!player.isProtagonist){
-            introText = new JLabel(" antag");
-            introScreen.add(introText);
-            introScreen.add(Box.createRigidArea(new Dimension(0, 150)));
-            introScreen.add(playerInput);
+            introText = new JLabel(" antag dialogue");
+            introText.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
             introText.setAlignmentX(Component.CENTER_ALIGNMENT);
-            playerInput.setAlignmentX(Component.CENTER_ALIGNMENT);
-        }
-        //add text box
+            textInput.setAlignmentX(Component.CENTER_ALIGNMENT);
+            prompt.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+            introScreen.add(introText);
+            introScreen.add(Box.createRigidArea(new Dimension(0, Const.INTRO_SPACING1)));
+            introScreen.add(prompt);
+            introScreen.add(Box.createRigidArea(new Dimension(0, Const.INTRO_SPACING2)));
+            introScreen.add(textInput);
+        }
+        JButton playButton = new JButton("Play!");
+        playButton.setMaximumSize(new Dimension(150, 75));
+        playButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        playButton.addActionListener(actionsListener);
+        introScreen.add(playButton);
         frame.add(startingScreen);
-        
+
         frame.setVisible(true);
         frame.setResizable(true);
         panel.addMouseListener(mouseListener);
         
-        player.name = playerCount;
+       // player.name = playerCount;
         
         while(true){
             try {Thread.sleep(20);} catch (InterruptedException e) {throw new RuntimeException(e);}
-            
             // receives input from server
             if(input.ready()){
                 String[] in = input.readLine().split(" ");
@@ -165,14 +173,23 @@ public class Client implements Runnable{
             frame.repaint();
         }
     }
-    public class startButtonListener implements ActionListener{
+    public class ActionsListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
-            frame.remove(startingScreen);
-            frame.add(introScreen);
-            panel.setVisible(true);
-            frame.validate();
-            frame.repaint();
+            String s = e.getActionCommand();
+            if (s.equals("Start")){
+                frame.remove(startingScreen);
+                frame.add(introScreen);
+                frame.validate();
+                frame.repaint();
+            }
+            if (s.equals("Play!")){
+                player.name = textInput.getText();
+                frame.remove(introScreen);
+                frame.add(panel);
+                frame.validate();
+                frame.repaint();
+            }
         }
     }
     public class MyMouseListener implements MouseListener{
@@ -207,7 +224,6 @@ public class Client implements Runnable{
         @Override
         public void mouseExited(MouseEvent e) {}
     }
-    
     public void stop() throws Exception {
         input.close();
         output.close();
