@@ -106,7 +106,7 @@ public class Client implements Runnable{
         prompt.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
         textInput.setMaximumSize(new Dimension(Const.WIDTH/2,Const.FONT_SIZE * 2 ));
         if (player.isProtagonist){
-            introText = new JLabel(" protag input");
+            introText = new JLabel(String.format("<html><div WIDTH=%d>%s</div></html>", Const.WIDTH/3, Const.INTRO_PROTAG));
             introText.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
             introText.setAlignmentX(Component.CENTER_ALIGNMENT);
             textInput.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -121,6 +121,10 @@ public class Client implements Runnable{
         else if (!player.isProtagonist){
             introText = new JLabel(" antag dialogue");
             introText.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
+            introText = new JLabel(String.format("<html><div WIDTH=%d>%s</div></html>", Const.WIDTH/3, Const.INTRO_ANTAG));
+            introScreen.add(introText);
+            introScreen.add(Box.createRigidArea(new Dimension(0, 150)));
+            introScreen.add(textInput);
             introText.setAlignmentX(Component.CENTER_ALIGNMENT);
             textInput.setAlignmentX(Component.CENTER_ALIGNMENT);
             prompt.setAlignmentX(Component.CENTER_ALIGNMENT);
