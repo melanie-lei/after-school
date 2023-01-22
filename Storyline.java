@@ -93,12 +93,12 @@ public class Storyline {
         if(currentPoint.dialogueCount < currentPoint.dialogue.size()-1) {
             currentPoint.dialogueCount++;
         }
-        if(currentPoint.isEnd && currentPoint.isDeath &&currentPoint.dialogueCount ==  currentPoint.dialogue.size()-1){
+        if(currentPoint.isEnd && currentPoint.isDeath && currentPoint.dialogueCount ==  currentPoint.dialogue.size()-1){
             currentPoint.picture = Const.FINAL_DEATH_SCENE;
         }
     }
     public String getImage(){
-        System.out.println(this.currentPoint.picture);
+        // System.out.println(this.currentPoint.picture);
         return this.currentPoint.picture;
     }
     public void goNext(int weight){
