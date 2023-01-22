@@ -105,7 +105,6 @@ public class Storyline {
     }
     // get the image path
     public String getImage(){
-        // System.out.println(this.currentPoint.picture);
         return this.currentPoint.picture;
     }
     // progress through the story graph
