@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
+// Melanie Lei
 public class Server {
     final int PORT = 5050;
     String[] choices = {"-1", "-1"};
@@ -13,16 +14,9 @@ public class Server {
     Socket clientSocket;
     int clientCounter = 0;
     ArrayList<ConnectionHandler> clients = new ArrayList<>();
-    
     Storyline storyline;
-
-    {
-        try {
-            storyline = new Storyline();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    
+    {try {storyline = new Storyline();} catch (FileNotFoundException e) {throw new RuntimeException(e);}}
 
 
     public static void main(String[] args) throws Exception{
@@ -57,8 +51,6 @@ public class Server {
         PrintWriter output;
         BufferedReader input;
         int clientCount;
-        
-        
 
         public ConnectionHandler(Socket socket, int clientCount) {
             this.socket = socket;
@@ -66,6 +58,7 @@ public class Server {
         }
 
         public void run() {
+            // create input and output readers for sending data
             try {
                 input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 output = new PrintWriter(socket.getOutputStream());
@@ -73,7 +66,9 @@ public class Server {
                 throw new RuntimeException(e);
             }
 
+            // tell client which number they are
             output.println(clientCount);
+            
             while (true) {
                 try {Thread.sleep(20);} catch (InterruptedException e) {throw new RuntimeException(e);}
                 try {
@@ -81,12 +76,11 @@ public class Server {
                     if (input.ready()) {
                         System.out.println("receiving data");
                         String[] data = input.readLine().split(" ");
-                        System.out.println(data[0]);
-                        if(data[0].equals("chat")){
-                            // chat things
-                            sendData(String.join(" ", data));
+                        
+                        if(data[0].equals("chat")){ // chat updates
+                            sendData(String.join(" ", data)); // send updated data to both clients
                         } else {
-                            if(data[0].equals("true")){ // protagonist
+                            if(data[0].equals("true")){ // data from protagonist
                                 choices[0] = data[1];
                             } else {
                                 choices[1] = data[1];
@@ -96,7 +90,7 @@ public class Server {
                     
                     // once two decisions are received, send data back
                     if(!(choices[0].equals("-1") || choices[1].equals("-1"))){
-                        // check if the decision should be influenced by protag or antag
+                        // check if the decision should be influenced by protag or antag then sends decision back
                         if(storyline.isProtagonistChoice()){
                             sendData(choices[0]);
                             storyline.goNext(Integer.parseInt(choices[0]));
@@ -107,7 +101,6 @@ public class Server {
                         choices[0] = "-1";
                         choices [1] = "-1";
                     }
-                    
                     output.flush();
 
                 } catch (IOException e) {

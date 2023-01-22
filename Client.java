@@ -12,6 +12,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+// Melanie Lei & Jaclyn Wang
 public class Client implements Runnable{
     final String LOCAL_HOST = "192.168.12.7";
     final int PORT = 5050;
@@ -41,6 +42,9 @@ public class Client implements Runnable{
 
     public Client() throws IOException {
     }
+    public static boolean showForeground = false;
+    BufferedImage title;
+    // Melanie Lei
     @Override
     public void run() {
         Client client = null;
@@ -51,8 +55,9 @@ public class Client implements Runnable{
         } catch (Exception e) {throw new RuntimeException(e);}
         try {client.stop();} catch (Exception e) {throw new RuntimeException(e);}
     }
-
+    
     public void localStart() throws Exception {
+        // Melanie Lei
         System.out.println("Attempting to establish a connection ...");
         clientSocket = new Socket(LOCAL_HOST, PORT);          //create and bind a socket, and request connection
         output = new PrintWriter(clientSocket.getOutputStream());
@@ -68,7 +73,9 @@ public class Client implements Runnable{
         scene.setDialogue(storyline.getDialogue());
         dialogueOptions.setOptions(storyline.getOptions(player));
         scene.setImage(storyline.getImage());
+
         
+        // Jaclyn Wang
         //establish graphics panel
         frame = new JFrame("GraphicsDemo");
         panel = new GraphicsPanel(chatBox, dialogueOptions, scene, antNotes);
@@ -103,6 +110,8 @@ public class Client implements Runnable{
             introScreen = makeIntro(introText);
         }
         else if (!player.isProtagonist){
+            introText = new JLabel(" antag dialogue");
+            introText.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
             introText = new JLabel(String.format("<html><div WIDTH=%d>%s</div></html>", Const.WIDTH/3, Const.INTRO_ANTAG));
             introScreen = makeIntro(introText);
         }
@@ -124,6 +133,12 @@ public class Client implements Runnable{
         frame.setResizable(true);
         panel.addMouseListener(mouseListener);
 
+        // drawing everything of first scene
+        scene.setDialogue(storyline.getDialogue());
+        dialogueOptions.setOptions(storyline.getOptions(player));
+        scene.setImage(storyline.getImage());
+
+        // Melanie Lei
         while(true){
             try {Thread.sleep(20);} catch (InterruptedException e) {throw new RuntimeException(e);}
             // receives input from server
@@ -147,6 +162,8 @@ public class Client implements Runnable{
             if(!player.isProtagonist){
                 antNotes.setText(storyline.getAntNotes());
             }
+
+            // check if the plot point is end
             if(storyline.isEnd()){
                 dialogueOptions.draw = false;
                 chatBox.draw = false;
@@ -161,10 +178,11 @@ public class Client implements Runnable{
                     frame.validate();
                 }
             }
+            showForeground = storyline.showsForeground();
             frame.repaint();
         }
     }
-    public JPanel makeIntro(JLabel dialogue){
+    public JPanel makeIntro(JLabel dialogue) {
         JPanel introPanel = new JPanel();
         textInput = new JTextField();
         introPanel.setBackground(Const.BACKGROUND_COLOR);
@@ -174,7 +192,7 @@ public class Client implements Runnable{
         JLabel prompt = new JLabel("Please enter your name here:");
         prompt.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
 
-        textInput.setMaximumSize(new Dimension(Const.WIDTH/2,Const.FONT_SIZE * 2 ));
+        textInput.setMaximumSize(new Dimension(Const.WIDTH / 2, Const.FONT_SIZE * 2));
         introText.setFont(new Font("Times", Font.PLAIN, Const.FONT_SIZE));
         introText.setAlignmentX(Component.CENTER_ALIGNMENT);
         textInput.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -194,6 +212,8 @@ public class Client implements Runnable{
 
         return introPanel;
     }
+    
+    // Jaclyn Wang
     public class ActionsListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
@@ -222,6 +242,8 @@ public class Client implements Runnable{
             }
         }
     }
+    
+    // Jaclyn Wang
     public class MyMouseListener implements MouseListener{
         @Override
         public void mouseClicked(MouseEvent e) {

@@ -12,6 +12,10 @@
       <change beforePath="$PROJECT_DIR$/out/production/after-school/Client$MyMouseListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Client$MyMouseListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/after-school/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Client.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/after-school/Storyline$PlotPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/after-school/Storyline$PlotPoint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/Const.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GraphicsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/GraphicsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Storyline.java" beforeDir="false" afterPath="$PROJECT_DIR$/Storyline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plot" beforeDir="false" afterPath="$PROJECT_DIR$/plot" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,10 +51,16 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/lei31/OneDrive/Documents/GitHub/agario&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pathVariables&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pathVariables&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -60,7 +70,7 @@
       <recent name="$PROJECT_DIR$/images" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -95,6 +105,7 @@
       <workItem from="1673292725114" duration="432000" />
       <workItem from="1673293169779" duration="463000" />
       <workItem from="1673551000204" duration="7187000" />
+      <workItem from="1674354733895" duration="6028000" />
     </task>
     <servers />
   </component>

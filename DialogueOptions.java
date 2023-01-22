@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-
+// Jaclyn Wang
 public class DialogueOptions {
     String optionA;
     String optionB;
@@ -29,8 +29,8 @@ public class DialogueOptions {
             g.setColor(Color.black);
             g.setFont(new Font("Times new Roman", Font.PLAIN, Const.FONT_SIZE));
 
-            optionAWrap = Text.wrap(this.optionA, Const.BUTTON_WIDTH, g);
-            optionBWrap = Text.wrap(this.optionB, Const.BUTTON_WIDTH, g);
+            optionAWrap = Text.wrap(this.optionA, Const.BUTTON_WIDTH-Const.FONT_SIZE, g);
+            optionBWrap = Text.wrap(this.optionB, Const.BUTTON_WIDTH-Const.FONT_SIZE, g);
             for (String str : this.optionAWrap) {
                 g.drawString(str, Const.BUTTON1_X + Const.FONT_SIZE, Const.BUTTON1_Y + Const.FONT_SIZE * (this.optionAWrap.indexOf(str) + 1));
             }
